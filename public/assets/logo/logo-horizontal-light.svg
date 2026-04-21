@@ -1,0 +1,12 @@
+<svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon Section -->
+  <g transform="translate(10, 15)">
+    <path d="M 16 72 L 64 72 L 52 24 L 28 24 Z" stroke="#142A45" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M 40 72 V 24" stroke="#142A45" stroke-width="2" stroke-dasharray="3 5"/>
+    <path d="M 8 44 H 32" stroke="#142A45" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 26 38 L 32 44 L 26 50" stroke="#142A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Text Section -->
+  <text x="105" y="58" fill="#142A45" style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 42px; text-transform: uppercase; letter-spacing: 0.05em;">CROSSWIND</text>
+  <text x="105" y="92" fill="#142A45" style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 28px; text-transform: uppercase; letter-spacing: 0.05em;">CALCULATOR</text>
+</svg>

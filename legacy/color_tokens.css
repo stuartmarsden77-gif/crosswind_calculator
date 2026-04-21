@@ -1,0 +1,52 @@
+:root {
+  /* Base Colors */
+  --color-navy: #142A45;
+  --color-charcoal: #262B30;
+  --color-grey: #D1D8DC;
+  --color-white: #F8F9FA;
+  --color-obsidian: #121212;
+
+  /* Functional Indicator Colors (Muted) */
+  --color-indicator-low: #2E5339;      /* Forest Green */
+  --color-indicator-moderate: #CFA348; /* Harvest Gold */
+  --color-indicator-strong: #9B2226;   /* Deep Crimson */
+
+  /* Typography */
+  --font-primary: 'Montserrat', sans-serif;
+  --font-secondary: 'Public Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --spacing-unit: 8px;
+  --spacing-xs: calc(var(--spacing-unit) * 1); /* 8px */
+  --spacing-sm: calc(var(--spacing-unit) * 2); /* 16px */
+  --spacing-md: calc(var(--spacing-unit) * 3); /* 24px */
+  --spacing-lg: calc(var(--spacing-unit) * 4); /* 32px */
+  --spacing-xl: calc(var(--spacing-unit) * 6); /* 48px */
+
+  /* Components */
+  --radius-technical: 4px;
+  --border-width: 1.5px;
+  --border-color: var(--color-grey);
+}
+
+/* Base Styles */
+body {
+  font-family: var(--font-secondary);
+  background-color: var(--color-white);
+  color: var(--color-charcoal);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .logo-text {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.numeric-output {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}

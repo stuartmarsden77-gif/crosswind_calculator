@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crosswind Calculator | Technical Blueprint</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blueprint-bg: #0A192F;
+            --line-color: rgba(255, 255, 255, 0.8);
+            --line-dim: rgba(255, 255, 255, 0.2);
+            --accent-cyan: #64FFDA;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A8B2D1;
+            --grid-size: 40px;
+        }
+
+        body {
+            background-color: var(--blueprint-bg);
+            background-image: 
+                linear-gradient(var(--line-dim) 1px, transparent 1px),
+                linear-gradient(90deg, var(--line-dim) 1px, transparent 1px);
+            background-size: var(--grid-size) var(--grid-size);
+            color: var(--text-primary);
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .blueprint-container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 60px 20px;
+            box-sizing: border-box;
+        }
+
+        header {
+            border-bottom: 2px solid var(--line-color);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header-main h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .header-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            text-align: right;
+            text-transform: uppercase;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr 320px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .panel {
+            border: 1px solid var(--line-color);
+            padding: 24px;
+            position: relative;
+        }
+
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; width: 10px; height: 10px;
+            border-top: 1px solid var(--line-color);
+            border-left: 1px solid var(--line-color);
+        }
+
+        .panel-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent-cyan);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        input {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--line-dim);
+            color: white;
+            padding: 12px;
+            font-size: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+
+        .schematic-view {
+            height: 500px;
+            border: 1px solid var(--line-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .runway {
+            width: 60px;
+            height: 400px;
+            border: 2px solid var(--line-color);
+            position: relative;
+        }
+
+        .runway::after {
+            content: '';
+            position: absolute;
+            top: 20px; bottom: 20px; left: 50%;
+            border-left: 2px dashed var(--line-dim);
+            transform: translateX(-50%);
+        }
+
+        .runway-label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .r-top { top: 10px; }
+        .r-bottom { bottom: 10px; }
+
+        .wind-arrow {
+            position: absolute;
+            width: 180px;
+            height: 2px;
+            background: var(--accent-cyan);
+            transform-origin: center right;
+            transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .wind-arrow::after {
+            content: '';
+            position: absolute;
+            right: 0; top: -5px;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 10px solid var(--accent-cyan);
+        }
+
+        .result-item {
+            margin-bottom: 40px;
+        }
+
+        .result-value {
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin: 10px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .result-unit {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 1px solid var(--accent-cyan);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .section-break {
+            margin-top: 60px;
+            border-top: 1px solid var(--line-dim);
+            padding-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .content-block h2 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            border-left: 3px solid var(--accent-cyan);
+            padding-left: 12px;
+        }
+
+        .content-block p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .ad-row {
+            margin-top: 60px;
+            border: 1px dashed var(--line-dim);
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--line-dim);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-break {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-container">
+        <header>
+            <div class="header-main">
+                <h1>Crosswind Calculator</h1>
+            </div>
+            <div class="header-meta">
+                System: AVIA-TECH V2.4<br>
+                Ref: T.O. 1.5PX / GRID 40MM
+            </div>
+        </header>
+
+        <main>
+            <div class="main-grid">
+                <!-- PANEL 01: INPUTS -->
+                <div class="panel">
+                    <div class="panel-title">
+                        <span>[01] Controls</span>
+                        <span>AUTO-CALC</span>
+                    </div>
+                    <div class="input-group">
+                        <label>Runway Heading (DEG)</label>
+                        <input type="number" id="runway" value="360" min="1" max="360">
+                    </div>
+                    <div class="input-group">
+                        <label>Wind Direction (DEG)</label>
+                        <input type="number" id="wind-dir" value="045" min="0" max="360">
+                    </div>
+                    <div class="input-group">
+                        <label>Wind Speed (KTS)</label>
+                        <input type="number" id="wind-speed" value="20" min="0">
+                    </div>
+                </div>
+
+                <!-- PANEL 02: SCHEMATIC -->
+                <div class="schematic-view">
+                    <div class="runway" id="runway-obj">
+                        <div class="runway-label r-top" id="rt-label">36</div>
+                        <div class="runway-label r-bottom" id="rb-label">18</div>
+                    </div>
+                    <div class="wind-arrow" id="wind-arrow"></div>
+                </div>
+
+                <!-- PANEL 03: DATA READOUT -->
+                <div class="panel">
+                    <div class="panel-title">
+                        <span>[03] Data Stream</span>
+                        <span>[OK]</span>
+                    </div>
+                    <div class="result-item">
+                        <label>Crosswind Component</label>
+                        <div class="result-value" id="xw-val">14 <span class="result-unit">KTS</span></div>
+                        <div class="status-badge" id="xw-status">PASS</div>
+                    </div>
+                    <div class="result-item">
+                        <label>Headwind Component</label>
+                        <div class="result-value" id="hw-val">14 <span class="result-unit">KTS</span></div>
+                         <div class="status-badge">NOMINAL</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ad-row">
+                Technical Advertisement Slot // Standard Clearance Required
+            </div>
+
+            <div class="section-break">
+                <div class="content-block">
+                    <h2>Flight Operations</h2>
+                    <p>Calculations are based on trigonometric vector decomposition. Ensure magnetic variation is accounted for if using true wind direction sources.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Crosswind Limits</h2>
+                    <p>Maximum demonstrated crosswind components vary by airframe. Always consult your POH/AFM before attempting operations in high-wind conditions.</p>
+                </div>
+                <div class="content-block">
+                    <h2>System FAQ</h2>
+                    <p>How do I input a tailwind? The system automatically detects relative direction. Negative headwind values indicate a tailwind component.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const rwyInput = document.getElementById('runway');
+        const wdirInput = document.getElementById('wind-dir');
+        const wspdInput = document.getElementById('wind-speed');
+
+        const xwVal = document.getElementById('xw-val');
+        const hwVal = document.getElementById('hw-val');
+        const xwStatus = document.getElementById('xw-status');
+        const windArrow = document.getElementById('wind-arrow');
+        const rtLabel = document.getElementById('rt-label');
+        const rbLabel = document.getElementById('rb-label');
+
+        function update() {
+            let rwy = parseInt(rwyInput.value) || 0;
+            let wdir = parseInt(wdirInput.value) || 0;
+            let wspd = parseInt(wspdInput.value) || 0;
+
+            const rwyNum = Math.floor(((rwy % 360) || 360) / 10);
+            const oppNum = (rwyNum + 18) > 36 ? rwyNum - 18 : rwyNum + 18;
+            rtLabel.textContent = rwyNum.toString().padStart(2, '0');
+            rbLabel.textContent = oppNum.toString().padStart(2, '0');
+
+            let diff = wdir - rwy;
+            while(diff > 180) diff -= 360;
+            while(diff < -180) diff += 360;
+
+            const rad = diff * Math.PI / 180;
+            const xw = Math.abs(wspd * Math.sin(rad));
+            const hw = wspd * Math.cos(rad);
+
+            xwVal.innerHTML = `${Math.round(xw)} <span class="result-unit">KTS</span>`;
+            hwVal.innerHTML = `${Math.abs(Math.round(hw))} <span class="result-unit">KTS</span>`;
+
+            // Rotate relative to vertical runway
+            windArrow.style.transform = `rotate(${270 + diff}deg) translateX(-90px)`;
+
+            if (xw > 25) {
+                xwStatus.textContent = 'LIMIT';
+                xwStatus.style.color = '#FF4B4B';
+                xwStatus.style.borderColor = '#FF4B4B';
+            } else if (xw > 12) {
+                xwStatus.textContent = 'CAUTION';
+                xwStatus.style.color = '#FFB800';
+                xwStatus.style.borderColor = '#FFB800';
+            } else {
+                xwStatus.textContent = 'PASS';
+                xwStatus.style.color = 'var(--accent-cyan)';
+                xwStatus.style.borderColor = 'var(--accent-cyan)';
+            }
+        }
+
+        [rwyInput, wdirInput, wspdInput].forEach(el => el.addEventListener('input', update));
+        update();
+    </script>
+</body>
+</html>

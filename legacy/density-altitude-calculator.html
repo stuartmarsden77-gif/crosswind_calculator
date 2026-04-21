@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Density Altitude Calculator | Aviation Performance Tool</title>
+    <meta name="description" content="Calculate density altitude for aircraft takeoff and landing performance. essential aviation tool for pilots.">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blueprint-bg: #0A192F;
+            --blueprint-dark: #060E1A;
+            --line-color: rgba(255, 255, 255, 0.8);
+            --line-dim: rgba(255, 255, 255, 0.1);
+            --accent-cyan: #64FFDA;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A8B2D1;
+            --grid-size: 40px;
+        }
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--blueprint-bg);
+            background-image: linear-gradient(var(--line-dim) 1px, transparent 1px), linear-gradient(90deg, var(--line-dim) 1px, transparent 1px);
+            background-size: var(--grid-size) var(--grid-size);
+            color: var(--text-primary);
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0; padding: 0;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .container { max-width: 1200px; width: 100%; padding: 0 20px; }
+        nav {
+            width: 100%; border-bottom: 2px solid var(--line-color);
+            padding: 16px 0; display: flex; justify-content: center;
+            background: var(--blueprint-bg); position: sticky; top: 0; z-index: 1000;
+        }
+        .nav-content { max-width: 1200px; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 40px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+        .logo-box { width: 28px; height: 28px; border: 2px solid var(--accent-cyan); position: relative; }
+        .nav-sections { display: flex; gap: 40px; }
+        .nav-item { position: relative; padding: 10px 0; }
+        .nav-item > a { color: var(--text-secondary); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: 600; letter-spacing: 1.5px; transition: color 0.3s; }
+        .nav-item:hover > a { color: var(--accent-cyan); }
+        .dropdown { position: absolute; top: 100%; left: 0; background: var(--blueprint-dark); border: 1px solid var(--line-color); min-width: 220px; padding: 10px 0; display: none; z-index: 1000; }
+        .nav-item:hover .dropdown { display: block; }
+        .dropdown a { display: block; padding: 12px 20px; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s, color 0.3s; }
+        .dropdown a:hover { background: rgba(100, 255, 218, 0.1); color: var(--accent-cyan); }
+
+        .hero { padding: 80px 0; border-bottom: 2px solid var(--line-color); }
+        .hero-head { margin-bottom: 50px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .hero-head h1 { margin: 0; font-size: 4.5rem; text-transform: uppercase; line-height: 1; font-weight: 700; }
+        .hero-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent-cyan); text-align: right; }
+
+        .tool-grid { display: grid; grid-template-columns: 320px 1fr 340px; gap: 50px; }
+        .panel { border: 1px solid var(--line-color); padding: 30px; background: rgba(10, 25, 47, 0.7); position: relative; }
+        .panel-title { font-size: 0.9rem; text-transform: uppercase; font-weight: 700; margin-bottom: 25px; color: var(--accent-cyan); border-bottom: 1px solid var(--line-dim); padding-bottom: 12px; }
+        .input-group { margin-bottom: 25px; }
+        label { display: block; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px; color: var(--text-secondary); font-weight: 600; }
+        input { width: 100%; background: var(--blueprint-dark); border: 1px solid var(--line-dim); color: white; padding: 14px; font-size: 1.6rem; font-family: 'JetBrains Mono', monospace; }
+        input:focus { outline: none; border-color: var(--accent-cyan); }
+
+        .schematic { height: 500px; border: 1px solid var(--line-color); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; background: rgba(0,0,0,0.1); gap: 20px; }
+        .alt-gauge { width: 200px; height: 200px; border: 4px solid var(--line-color); border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .alt-needle { position: absolute; width: 2px; height: 80px; background: var(--accent-cyan); bottom: 50%; transform-origin: bottom center; transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1); }
+        .alt-label { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; color: var(--accent-cyan); }
+
+        .res-val { font-size: 5.5rem; font-weight: 700; line-height: 1; margin: 12px 0; display: flex; align-items: baseline; gap: 12px; }
+        .res-unit { font-size: 1.1rem; color: var(--text-secondary); letter-spacing: 1px; }
+
+        footer { width: 100%; padding: 100px 0; background: var(--blueprint-dark); border-top: 2px solid var(--line-color); }
+        .foot-info { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 60px; }
+        .foot-brand { display: flex; flex-direction: column; gap: 20px; }
+        .foot-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; }
+        .foot-links h4 { color: var(--accent-cyan); text-transform: uppercase; font-size: 0.9rem; margin-bottom: 25px; letter-spacing: 2px; border-left: 3px solid var(--accent-cyan); padding-left: 15px; }
+        .foot-links ul { list-style: none; padding: 0; margin: 0; }
+        .foot-links li { margin-bottom: 12px; }
+        .foot-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+        .foot-links a:hover { color: var(--accent-cyan); }
+
+        @media (max-width: 1100px) { .tool-grid, .foot-info { grid-template-columns: 1fr; gap: 50px; } .hero-head h1 { font-size: 3rem; } .nav-sections { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo"><img src="assets/logo/logo-horizontal-dark.svg" alt="Crosswind Calculator Logo"></a>
+            <div class="nav-sections">
+                <div class="nav-item"><a href="#">Calculators</a>
+                    <div class="dropdown">
+                        <a href="index.html">Crosswind Calculator</a>
+                        <a href="density-altitude-calculator.html">Density Altitude</a>
+                        <a href="#">Fuel Planning</a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="#">Resources</a>
+                    <div class="dropdown">
+                        <a href="index.html#methodology">Manual Formula</a>
+                        <a href="aircraft-crosswind-limits-table.html">Aircraft Limits DB</a>
+                        <a href="manual-crosswind-calculation-guide.html">Pilot Guides</a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="#">About</a></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <div class="hero-head">
+                <h1>Density Altitude</h1>
+                <div class="hero-meta">PRECISION PERFORMANCE DATA<br>REF: ICAO STANDARD ATMOSPHERE</div>
+            </div>
+
+            <div class="tool-grid">
+                <div class="panel">
+                    <div class="panel-title">01_ENVIRONMENTAL</div>
+                    <div class="input-group">
+                        <label>Pressure Altitude (FT)</label>
+                        <input type="number" id="p-alt" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label>Outside Air Temp (°C)</label>
+                        <input type="number" id="oat" value="15">
+                    </div>
+                </div>
+
+                <div class="schematic">
+                    <div class="alt-gauge">
+                        <div class="alt-needle" id="needle"></div>
+                    </div>
+                    <div class="alt-label">ALT PERFORMANCE</div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-title">03_CALCULATED_ALTITUDE</div>
+                    <div style="margin-bottom: 40px;">
+                        <label>Density Altitude Result</label>
+                        <div class="res-val" id="da-val">0 <span class="res-unit">FT</span></div>
+                    </div>
+                    <div>
+                        <label>ISA Temperature</label>
+                        <div class="res-val" id="isa-val" style="font-size: 3rem;">15 <span class="res-unit">°C</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="foot-info">
+                <div class="foot-brand">
+                    <a href="/" class="logo"><img src="assets/logo/logo-horizontal-dark.svg" alt="Crosswind Calculator Logo"></a>
+                    <p class="foot-desc">Providing precision flight data for pilots worldwide. Vector-analysis tools for safe takeoff and landing.</p>
+                </div>
+                <div class="foot-links">
+                    <h4>Calculators</h4>
+                    <ul>
+                        <li><a href="index.html">Crosswind Calc</a></li>
+                        <li><a href="density-altitude-calculator.html">Density Altitude</a></li>
+                        <li><a href="#">Fuel Planner</a></li>
+                    </ul>
+                </div>
+                <div class="foot-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="manual-crosswind-calculation-guide.html">Manual Calc Guide</a></li>
+                        <li><a href="aircraft-crosswind-limits-table.html">Aircraft Limits DB</a></li>
+                        <li><a href="index.html#methodology">Wind Theory</a></li>
+                    </ul>
+                </div>
+                <div class="foot-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const pAltIn = document.getElementById('p-alt');
+        const oatIn = document.getElementById('oat');
+        const daVal = document.getElementById('da-val');
+        const isaVal = document.getElementById('isa-val');
+        const needle = document.getElementById('needle');
+
+        function update() {
+            let pAlt = parseInt(pAltIn.value) || 0;
+            let oat = parseInt(oatIn.value) || 0;
+
+            const isaTemp = 15 - (2 * (pAlt / 1000));
+            const densityAlt = pAlt + (120 * (oat - isaTemp));
+
+            daVal.innerHTML = `${Math.round(densityAlt)} <span class="res-unit">FT</span>`;
+            isaVal.innerHTML = `${Math.round(isaTemp)} <span class="res-unit">°C</span>`;
+
+            // Needle logic: 0 to 10000 ft maps to 0 to 360 deg
+            const rotation = (densityAlt / 10000) * 360;
+            needle.style.transform = `rotate(${rotation}deg)`;
+        }
+
+        [pAltIn, oatIn].forEach(el => el.addEventListener('input', update));
+        update();
+    </script>
+</body>
+</html>

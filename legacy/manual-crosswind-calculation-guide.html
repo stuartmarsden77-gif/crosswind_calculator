@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Calculate Crosswind Manually | Pilot's Guide</title>
+    <meta name="description" content="Learn the formulas and shortcuts for manual crosswind calculation. includes the clock method and trigonometric rules for pilots.">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blueprint-bg: #0A192F;
+            --blueprint-dark: #060E1A;
+            --line-color: rgba(255, 255, 255, 0.8);
+            --line-dim: rgba(255, 255, 255, 0.1);
+            --accent-cyan: #64FFDA;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A8B2D1;
+            --grid-size: 40px;
+        }
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--blueprint-bg);
+            background-image: linear-gradient(var(--line-dim) 1px, transparent 1px), linear-gradient(90deg, var(--line-dim) 1px, transparent 1px);
+            background-size: var(--grid-size) var(--grid-size);
+            color: var(--text-primary);
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0; padding: 0;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .container { max-width: 900px; width: 100%; padding: 0 20px; }
+        nav {
+            width: 100%; border-bottom: 2px solid var(--line-color);
+            padding: 16px 0; display: flex; justify-content: center;
+            background: var(--blueprint-bg); position: sticky; top: 0; z-index: 1000;
+        }
+        .nav-content { max-width: 1200px; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 40px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+        .logo-box { width: 28px; height: 28px; border: 2px solid var(--accent-cyan); position: relative; }
+        .nav-sections { display: flex; gap: 40px; }
+        .nav-item { position: relative; padding: 10px 0; }
+        .nav-item > a { color: var(--text-secondary); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: 600; letter-spacing: 1.5px; transition: color 0.3s; }
+        .nav-item:hover > a { color: var(--accent-cyan); }
+        .dropdown { position: absolute; top: 100%; left: 0; background: var(--blueprint-dark); border: 1px solid var(--line-color); min-width: 220px; padding: 10px 0; display: none; z-index: 1000; }
+        .nav-item:hover .dropdown { display: block; }
+        .dropdown a { display: block; padding: 12px 20px; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s, color 0.3s; }
+        .dropdown a:hover { background: rgba(100, 255, 218, 0.1); color: var(--accent-cyan); }
+
+        .article { padding: 80px 0; }
+        h1 { font-size: 3.5rem; text-transform: uppercase; margin-bottom: 40px; line-height: 1.1; }
+        h2 { font-size: 2rem; text-transform: uppercase; margin-top: 60px; margin-bottom: 25px; border-left: 4px solid var(--accent-cyan); padding-left: 20px; }
+        p { font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 30px; }
+        .formula-box { background: var(--blueprint-dark); border: 1px dashed var(--line-color); padding: 40px; margin: 40px 0; font-family: 'JetBrains Mono', monospace; }
+        .formula { font-size: 1.5rem; color: var(--accent-cyan); margin-bottom: 15px; }
+        .formula-desc { font-size: 0.9rem; color: var(--text-secondary); }
+
+        footer { width: 100%; padding: 100px 0; background: var(--blueprint-dark); border-top: 2px solid var(--line-color); margin-top: 100px; }
+        .foot-info { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 60px; }
+        .foot-brand { display: flex; flex-direction: column; gap: 20px; }
+        .foot-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; }
+        .foot-links h4 { color: var(--accent-cyan); text-transform: uppercase; font-size: 0.9rem; margin-bottom: 25px; letter-spacing: 2px; border-left: 3px solid var(--accent-cyan); padding-left: 15px; }
+        .foot-links ul { list-style: none; padding: 0; margin: 0; }
+        .foot-links li { margin-bottom: 12px; }
+        .foot-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+        .foot-links a:hover { color: var(--accent-cyan); }
+
+        @media (max-width: 1100px) { h1 { font-size: 2.5rem; } .nav-sections, .foot-info { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo"><img src="assets/logo/logo-horizontal-dark.svg" alt="Crosswind Calculator Logo"></a>
+            <div class="nav-sections">
+                <div class="nav-item"><a href="#">Calculators</a>
+                    <div class="dropdown">
+                        <a href="index.html">Crosswind Calculator</a>
+                        <a href="density-altitude-calculator.html">Density Altitude</a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="#">Resources</a>
+                    <div class="dropdown">
+                        <a href="#formula">Manual Formula</a>
+                        <a href="aircraft-crosswind-limits-table.html">Aircraft Limits DB</a>
+                        <a href="manual-crosswind-calculation-guide.html">Pilot Guides</a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="#">About</a></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <article class="article">
+            <h1>Manual Crosswind Calculation: The Pilot's Guide</h1>
+            <p>While modern flight decks provide instant data, every pilot should be able to calculate crosswind components manually. This guide covers the mathematical formulas and the "Clock Method" used for quick cockpit mental math.</p>
+
+            <h2 id="formula">The Trigonometric Method</h2>
+            <p>The most accurate way to calculate the crosswind component is using the sine and cosine functions. This method treats the wind as a vector acting upon the runway heading.</p>
+            
+            <div class="formula-box">
+                <div class="formula">XW = Wind Speed × sin(Angle)</div>
+                <div class="formula-desc">Where 'Angle' is the difference between runway heading and wind direction.</div>
+            </div>
+
+            <div class="formula-box">
+                <div class="formula">HW = Wind Speed × cos(Angle)</div>
+                <div class="formula-desc">Use this to find the headwind or tailwind component.</div>
+            </div>
+
+            <h2>The Clock Method (Mental Math)</h2>
+            <p>In a high-workload environment, pilots use the "Clock Method" for a rapid approximation. This uses 60 minutes of a clock face to determine how much of the total wind acts as a crosswind:</p>
+            <ul>
+                <li><strong>15° Angle:</strong> 1/4 of total wind (15 minutes = 1/4 of a clock).</li>
+                <li><strong>30° Angle:</strong> 1/2 of total wind (30 minutes = 1/2 of a clock).</li>
+                <li><strong>45° Angle:</strong> 3/4 of total wind (45 minutes = 3/4 of a clock).</li>
+                <li><strong>60°+ Angle:</strong> Total wind is the crosswind.</li>
+            </ul>
+
+            <h2>Why It Matters</h2>
+            <p>Exceeding an aircraft's maximum demonstrated crosswind limit is a major safety risk. Understanding these components allows for better decision-making during the approach and landing phase fixed wing flight.</p>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="foot-info">
+                <div class="foot-brand">
+                    <a href="/" class="logo"><img src="assets/logo/logo-horizontal-dark.svg" alt="Crosswind Calculator Logo"></a>
+                    <p class="foot-desc">Providing precision flight data for pilots worldwide.</p>
+                </div>
+                <div class="foot-links">
+                    <h4>Calculators</h4>
+                    <ul>
+                        <li><a href="index.html">Crosswind Calc</a></li>
+                        <li><a href="density-altitude-calculator.html">Density Altitude</a></li>
+                    </ul>
+                </div>
+                <div class="foot-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="manual-crosswind-calculation-guide.html">Manual Calc Guide</a></li>
+                        <li><a href="aircraft-crosswind-limits-table.html">Aircraft Limits DB</a></li>
+                    </ul>
+                </div>
+                <div class="foot-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

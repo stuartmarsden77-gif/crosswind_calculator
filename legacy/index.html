@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crosswind Calculator | Precision Aviation Wind Component Tool</title>
+    <meta name="description" content="Calculate your aircraft's crosswind and headwind components instantly. Essential pilot tool for safe takeoff and landing. Get correct data now.">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blueprint-bg: #0A192F;
+            --blueprint-dark: #060E1A;
+            --line-color: rgba(255, 255, 255, 0.8);
+            --line-dim: rgba(255, 255, 255, 0.1);
+            --accent-cyan: #64FFDA;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A8B2D1;
+            --grid-size: 40px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--blueprint-bg);
+            background-image: 
+                linear-gradient(var(--line-dim) 1px, transparent 1px),
+                linear-gradient(90deg, var(--line-dim) 1px, transparent 1px);
+            background-size: var(--grid-size) var(--grid-size);
+            color: var(--text-primary);
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        nav {
+            width: 100%;
+            border-bottom: 2px solid var(--line-color);
+            padding: 24px 0;
+            display: flex;
+            justify-content: center;
+            background: var(--blueprint-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 40px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .logo-box {
+            width: 28px; height: 28px; border: 2px solid var(--accent-cyan);
+            position: relative;
+        }
+
+        .nav-sections {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .nav-item > a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover > a {
+            color: var(--accent-cyan);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--blueprint-dark);
+            border: 1px solid var(--line-color);
+            min-width: 220px;
+            padding: 10px 0;
+            display: none;
+            z-index: 1000;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent-cyan);
+        }
+
+        .hero { padding: 80px 0; border-bottom: 2px solid var(--line-color); }
+        .hero-head { margin-bottom: 50px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .hero-head h1 { margin: 0; font-size: 4.5rem; text-transform: uppercase; line-height: 1; font-weight: 700; }
+        .hero-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent-cyan); text-align: right; }
+
+        .tool-grid { display: grid; grid-template-columns: 320px 1fr 340px; gap: 50px; }
+        .panel { border: 1px solid var(--line-color); padding: 30px; background: rgba(10, 25, 47, 0.7); position: relative; }
+        .panel-title { font-size: 0.9rem; text-transform: uppercase; font-weight: 700; margin-bottom: 25px; color: var(--accent-cyan); border-bottom: 1px solid var(--line-dim); padding-bottom: 12px; }
+        .input-group { margin-bottom: 25px; }
+        label { display: block; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px; color: var(--text-secondary); font-weight: 600; }
+        input { width: 100%; background: var(--blueprint-dark); border: 1px solid var(--line-dim); color: white; padding: 14px; font-size: 1.6rem; font-family: 'JetBrains Mono', monospace; }
+        input:focus { outline: none; border-color: var(--accent-cyan); }
+
+        .schematic { height: 500px; border: 1px solid var(--line-color); display: flex; align-items: center; justify-content: center; position: relative; background: rgba(0,0,0,0.1); }
+        .runway { width: 70px; height: 400px; border: 2px solid var(--line-color); position: relative; }
+        .runway::after { content: ''; position: absolute; top: 20px; bottom: 20px; left: 50%; border-left: 2px dashed var(--line-dim); transform: translateX(-50%); }
+        .r-num { position: absolute; width: 100%; text-align: center; font-weight: 700; font-size: 1.3rem; color: var(--text-secondary); }
+        .rn-t { top: 12px; } .rn-b { bottom: 12px; }
+        .wind-vec { position: absolute; width: 180px; height: 3px; background: var(--accent-cyan); transform-origin: center right; transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1); }
+        .wind-vec::after { content: ''; position: absolute; right: 0; top: -7px; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 12px solid var(--accent-cyan); }
+
+        .res-val { font-size: 5.5rem; font-weight: 700; line-height: 1; margin: 12px 0; display: flex; align-items: baseline; gap: 12px; }
+        .res-unit { font-size: 1.1rem; color: var(--text-secondary); letter-spacing: 1px; }
+        .badge { display: inline-block; padding: 5px 15px; border: 1px solid var(--accent-cyan); font-size: 0.85rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
+
+        .ad-space { margin: 60px auto; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s; }
+        .ad-space.lb { width: 728px; height: 90px; }
+        .ad-space.rect { width: 336px; height: 280px; }
+
+        section { padding: 100px 0; border-bottom: 1px solid var(--line-dim); }
+        .content-wrap { display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: start; }
+        h2 { font-size: 2.2rem; text-transform: uppercase; margin-bottom: 30px; border-left: 5px solid var(--accent-cyan); padding-left: 25px; letter-spacing: -0.5px; }
+        p { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 25px; }
+        code { font-family: 'JetBrains Mono', monospace; background: rgba(100, 255, 218, 0.1); padding: 2px 8px; border-radius: 4px; color: var(--accent-cyan); }
+
+        footer { width: 100%; padding: 100px 0; background: var(--blueprint-dark); border-top: 2px solid var(--line-color); }
+        .foot-info { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 60px; }
+        .foot-brand { display: flex; flex-direction: column; gap: 20px; }
+        .foot-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; }
+        .foot-links h4 { color: var(--accent-cyan); text-transform: uppercase; font-size: 0.9rem; margin-bottom: 25px; letter-spacing: 2px; border-left: 3px solid var(--accent-cyan); padding-left: 15px; }
+        .foot-links ul { list-style: none; padding: 0; margin: 0; }
+        .foot-links li { margin-bottom: 12px; }
+        .foot-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+        .foot-links a:hover { color: var(--accent-cyan); }
+
+        @media (max-width: 1100px) {
+            .tool-grid, .content-wrap, .foot-info { grid-template-columns: 1fr; gap: 50px; }
+            .hero-head { flex-direction: column; align-items: flex-start; gap: 25px; }
+            .ad-space.lb { width: 100%; height: 60px; }
+            .hero-head h1 { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">
+                <img src="assets/logo/logo-horizontal-dark.svg" alt="Crosswind Calculator Logo">
+            </a>
+            <div class="nav-sections">
+                <div class="nav-item">
+                    <a href="#">Calculators</a>
+                    <div class="dropdown">
+                        <a href="/">Crosswind Calculator</a>
+                        <a href="density-altitude-calculator.html">Density Altitude</a>
+                        <a href="#">Fuel Planning</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#">Resources</a>
+                    <div class="dropdown">
+                        <a href="#methodology">Manual Formula</a>
+                        <a href="aircraft-crosswind-limits-table.html">Aircraft Limits DB</a>
+                        <a href="manual-crosswind-calculation-guide.html">Pilot Guides</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#">Tools</a>
+                    <div class="dropdown">
+                        <a href="#">Weather Pro</a>
+                        <a href="#">Aviation API</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- PRIMARY CROSSWIND CALCULATOR TOOL -->
+        <div class="hero">
+            <div class="hero-head">
+                <div class="hero-title">
+                    <h1>Crosswind Calculator</h1>
+                </div>
+                <div class="hero-meta">
+                    AVIA-TECH PRECISION V2.4<br>
+                    REF: T.O. 1.5PX / GRID 40MM
+                </div>
+            </div>
+
+            <div class="tool-grid">
+                <!-- PANEL 01: INPUT CONTROLS -->
+                <div class="panel">
+                    <div class="panel-title">01_FLIGHT_INPUTS</div>
+                    <div class="input-group">
+                        <label>Runway Heading (DEG)</label>
+                        <input type="number" id="runway" value="360" min="1" max="360">
+                    </div>
+                    <div class="input-group">
+                        <label>Wind Direction (DEG)</label>
+                        <input type="number" id="wind-dir" value="045" min="0" max="360">
+                    </div>
+                    <div class="input-group">
+                        <label>Wind Speed (KTS)</label>
+                        <input type="number" id="wind-speed" value="20" min="0">
+                    </div>
+                </div>
+
+                <!-- DYNAMIC WIND SCHEMATIC -->
+                <div class="schematic" role="img" aria-label="runway-crosswind-schematic">
+                    <div class="runway">
+                        <div class="r-num rn-t" id="rt-t">36</div>
+                        <div class="r-num rn-b" id="rb-b">18</div>
+                    </div>
+                    <div class="wind-vec" id="wind-vec"></div>
+                </div>
+
+                <!-- PANEL 03: DATA READOUT -->
+                <div class="panel">
+                    <div class="panel-title">03_WIND_COMPONENTS</div>
+                    <div style="margin-bottom: 40px;">
+                        <label>Crosswind Component</label>
+                        <div class="res-val" id="xw-val">14 <span class="res-unit">KTS</span></div>
+                        <div class="badge" id="xw-status">PASS</div>
+                    </div>
+                    <div>
+                        <label>Headwind Component</label>
+                        <div class="res-val" id="hw-val">14 <span class="res-unit">KTS</span></div>
+                        <div class="badge">NOMINAL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AD SLOT A -->
+        <div class="ad-space lb"></div>
+
+        <!-- SEO SECTION 1: METHODOLOGY -->
+        <section id="methodology">
+            <div class="content-wrap">
+                <div>
+                    <h2>Crosswind Calculator Methodology</h2>
+                    <p>This <strong>crosswind calculator</strong> provides a <strong>correct</strong> <strong>value</strong> for any <strong>pilot</strong> to <strong>use</strong>. To <strong>calculate</strong> <strong>wind components</strong>, the <strong>tool</strong> decomposes the <strong>wind speed</strong> into vectors based on the <strong>angle</strong> between the <strong>wind</strong> and the <strong>runway heading</strong>.</p>
+                    <p>The <strong>direction</strong> relative to the <strong>runway</strong> <strong>heading</strong> is critical. When the <strong>wind</strong> is offset, it generates both a <strong>headwind</strong> and a <strong>crosswind</strong> <strong>component</strong>. By entering the <strong>number</strong> into this <strong>data</strong> set, the <strong>information</strong> provides an safety assessment for the <strong>aircraft</strong>.</p>
+                </div>
+                <div class="ad-space rect"></div>
+            </div>
+        </section>
+
+        <!-- SEO SECTION 2: DEFINITIONS -->
+        <section id="about">
+            <h2>What is a crosswind in aviation?</h2>
+            <p>In aviation, a <strong>crosswind component</strong> is the <strong>wind</strong> that blows perpendicular to the <strong>runway</strong>. While a steady <strong>wind</strong> coming directly down the strip is ideal, a shifting <strong>wind direction</strong> at an <strong>angle</strong> creates complex forces that every <strong>pilot</strong> must consider before they <strong>land</strong> the <strong>aircraft</strong>.</p>
+            <p>A <strong>tailwind</strong> component may also exist if the vector originates from behind the <strong>heading</strong>. This <strong>information</strong> is vital, as a strong <strong>tailwind</strong> significantly affects <strong>flight</strong> safety and <strong>runway</strong> performance. The <strong>wind</strong> <strong>direction</strong> and <strong>wind</strong> <strong>speed</strong> must be checked constantly.</p>
+        </section>
+
+        <!-- SEO SECTION 3: LIMITS -->
+        <section id="limits">
+            <div class="content-wrap">
+                <div>
+                    <h2>What is a safe crosswind limit?</h2>
+                    <p>Every <strong>aircraft</strong> design includes a specific maximum <strong>crosswind component</strong>. This <strong>value</strong> is the highest <strong>wind speed</strong> at which the <strong>aircraft</strong> was proven to <strong>land</strong> and maintain control. Do not exceed <strong>wind</strong> limits as reported by the <strong>wind</strong> sensors. High <strong>wind</strong> conditions require <strong>correct</strong> <strong>pilot</strong> technique.</p>
+                    <p>Typically, a small trainer has a limit of 15 knots, while a larger jet can handle much higher <strong>wind</strong> <strong>speed</strong> conditions. Always <strong>use</strong> the <strong>value</strong> from your manual. The <strong>wind</strong> <strong>direction</strong> determines the <strong>headwind</strong> or <strong>tailwind</strong> <strong>component</strong>.</p>
+                </div>
+                <div class="ad-space rect"></div>
+            </div>
+        </section>
+
+        <!-- SEO SECTION 4: PILOT PROCEDURES -->
+        <section id="how-to">
+            <h2>How do pilots calculate crosswind?</h2>
+            <p>To <strong>calculate</strong> the result manually, determine the <strong>angle</strong> between the <strong>wind direction</strong> and the <strong>runway heading</strong>. For example, if the <strong>runway</strong> is 360 and the <strong>wind direction</strong> is 030, there is a 30-degree <strong>angle</strong>. Using <strong>wind speed</strong>, they then find the force. This <strong>wind</strong> <strong>direction</strong> check is part of every <strong>flight</strong>.</p>
+            <p>Modern <strong>flight</strong> systems often provide the result instantly. This tells you if the force is pushing you to the <strong>left</strong> of the <strong>runway</strong> center. Knowing the <strong>wind</strong> vector is essential to <strong>calculate</strong> safe <strong>wind components</strong>.</p>
+        </section>
+
+        <!-- AD SLOT B -->
+        <div class="ad-space lb"></div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="foot-info">
+                <div class="foot-brand">
+                    <a href="/" class="logo">
+                        <img src="assets/logo/logo-horizontal-dark.svg" alt="Crosswind Calculator Logo">
+                    </a>
+                    <p class="foot-desc">
+                        Providing precision flight data for pilots worldwide. Our Crosswind Calculator uses vector analysis to deliver correct wind components for safe takeoff and landing operations.
+                    </p>
+                </div>
+                <div class="foot-links">
+                    <h4>Calculators</h4>
+                    <ul>
+                        <li><a href="/">Crosswind Calc</a></li>
+                        <li><a href="density-altitude-calculator.html">Density Altitude</a></li>
+                        <li><a href="#">Fuel Planner</a></li>
+                        <li><a href="#">Performance</a></li>
+                    </ul>
+                </div>
+                <div class="foot-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="manual-crosswind-calculation-guide.html">Manual Calc Guide</a></li>
+                        <li><a href="aircraft-crosswind-limits-table.html">Aircraft Limits DB</a></li>
+                        <li><a href="#methodology">Wind Theory</a></li>
+                        <li><a href="#">Pilot FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="foot-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const rwyIn = document.getElementById('runway');
+        const wdirIn = document.getElementById('wind-dir');
+        const wspdIn = document.getElementById('wind-speed');
+
+        const xwVal = document.getElementById('xw-val');
+        const hwVal = document.getElementById('hw-val');
+        const xwStatus = document.getElementById('xw-status');
+        const windVec = document.getElementById('wind-vec');
+        const rtText = document.getElementById('rt-t');
+        const rbText = document.getElementById('rb-b');
+
+        function update() {
+            let rwy = parseInt(rwyIn.value) || 0;
+            let wdir = parseInt(wdirIn.value) || 0;
+            let wspd = parseInt(wspdIn.value) || 0;
+
+            const rNum = Math.floor(((rwy % 360) || 360) / 10);
+            const oNum = (rNum + 18) > 36 ? rNum - 18 : rNum + 18;
+            rtText.textContent = rNum.toString().padStart(2, '0');
+            rbText.textContent = oNum.toString().padStart(2, '0');
+
+            let diff = wdir - rwy;
+            while(diff > 180) diff -= 360;
+            while(diff < -180) diff += 360;
+
+            const rad = diff * Math.PI / 180;
+            const xw = Math.abs(wspd * Math.sin(rad));
+            const hw = wspd * Math.cos(rad);
+
+            xwVal.innerHTML = `${Math.round(xw)} <span class="res-unit">KTS</span>`;
+            hwVal.innerHTML = `${Math.abs(Math.round(hw))} <span class="res-unit">KTS</span>`;
+
+            windVec.style.transform = `rotate(${270 + diff}deg) translateX(-90px)`;
+
+            if (xw > 25) {
+                xwStatus.textContent = 'LIMIT';
+                xwStatus.style.color = '#FF4B4B'; xwStatus.style.borderColor = '#FF4B4B';
+            } else if (xw > 12) {
+                xwStatus.textContent = 'CAUTION';
+                xwStatus.style.color = '#FFB800'; xwStatus.style.borderColor = '#FFB800';
+            } else {
+                xwStatus.textContent = 'PASS';
+                xwStatus.style.color = 'var(--accent-cyan)'; xwStatus.style.borderColor = 'var(--accent-cyan)';
+            }
+        }
+
+        [rwyIn, wdirIn, wspdIn].forEach(el => el.addEventListener('input', update));
+        update();
+    </script>
+</body>
+</html>
