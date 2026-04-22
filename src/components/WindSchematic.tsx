@@ -12,7 +12,7 @@ export default function WindSchematic({ runwayHeading, windDirection }: Schemati
   const relativeAngle = windDirection - runwayHeading;
 
   return (
-    <div className="relative w-full aspect-square max-w-[400px] mx-auto flex items-center justify-center p-8">
+    <div className="relative w-full aspect-square max-w-[300px] md:max-w-[400px] mx-auto flex items-center justify-center p-4 md:p-8">
       {/* Background Compass Ring */}
       <div className="absolute inset-0 border border-white/5 rounded-full" />
       <div className="absolute inset-4 border border-white/5 rounded-full border-dashed" />

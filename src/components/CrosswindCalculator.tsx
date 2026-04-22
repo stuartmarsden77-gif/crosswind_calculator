@@ -70,7 +70,7 @@ export default function CrosswindCalculator() {
           {/* Decorative Grid Line */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-400/5 blur-3xl rounded-full -mr-16 -mt-16" />
           
-          <div className="grid grid-cols-2 gap-4 mb-8">
+          <div className="grid grid-cols-2 gap-2 md:gap-4 mb-8">
             <ResultBox 
               label="Crosswind" 
               value={results?.crosswind || 0} 
@@ -156,7 +156,7 @@ function ResultBox({ label, value, unit, subValue, warning }: {
     <div className="bg-white/5 rounded-xl p-5 border border-white/5 group hover:border-cyan-400/20 transition-all duration-500">
       <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">{label}</p>
       <div className="flex items-baseline gap-2">
-        <span className={`text-4xl font-bold font-mono tracking-tighter ${warning ? 'text-red-400' : 'text-white group-hover:text-cyan-400'} transition-colors`}>
+        <span className={`text-2xl md:text-4xl font-bold font-mono tracking-tighter ${warning ? 'text-red-400' : 'text-white group-hover:text-cyan-400'} transition-colors`}>
           {value}
         </span>
         <span className="text-xs font-mono text-slate-500">{unit}</span>

@@ -3,9 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     {
@@ -80,13 +82,51 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <button className="md:hidden text-slate-400 px-2 py-1">
+          <button 
+            className="md:hidden text-slate-400 px-2 py-1"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+              {isMobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+              )}
             </svg>
           </button>
         </div>
       </div>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden glass border-b border-white/5 overflow-hidden"
+          >
+            <div className="px-6 py-6 space-y-6">
+              {navItems.map((item) => (
+                <div key={item.title} className="space-y-3">
+                  <div className="text-sm font-semibold text-white uppercase tracking-wider">{item.title}</div>
+                  <div className="pl-4 space-y-3 border-l border-white/10">
+                    {item.links.map((link) => (
+                      <Link
+                        key={link.name}
+                        href={link.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block text-sm text-slate-400 hover:text-cyan-400 transition-colors py-1"
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

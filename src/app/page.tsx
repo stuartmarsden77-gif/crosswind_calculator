@@ -50,13 +50,13 @@ export default function Home() {
       
       <main className="flex-grow">
         {/* Hero / Tool Section */}
-        <div className="pt-16 pb-24 border-b border-white/5">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-16">
-              <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-4">
+        <div className="pt-8 md:pt-16 pb-12 md:pb-24 border-b border-white/5">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="mb-10 md:mb-16">
+              <h1 className="text-4xl md:text-7xl font-bold text-white tracking-tighter mb-4">
                 <span className="text-cyan-400">Crosswind Calculator</span>: Runway Wind, Headwind, and Tailwind Calculation App
               </h1>
-              <p className="text-slate-400 text-lg max-w-2xl font-medium">
+              <p className="text-slate-400 text-base md:text-lg max-w-2xl font-medium">
                 Professional <strong>app</strong> for the modern <strong>pilot</strong>. Perform a precise <strong>calculation</strong> of <strong>wind</strong> variables to ensure safety during every phase of <strong>flight</strong>.
               </p>
             </div>
@@ -70,9 +70,9 @@ export default function Home() {
         </div>
 
         {/* Key Takeaways Section */}
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="bg-white/5 border border-cyan-500/30 rounded-2xl p-8">
-            <h2 className="text-2xl font-bold text-cyan-400 mb-6 mt-0">Key Takeaways for Safe Operations</h2>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
+          <div className="bg-white/5 border border-cyan-500/30 rounded-2xl p-6 md:p-8">
+            <h2 className="text-xl md:text-2xl font-bold text-cyan-400 mb-6 mt-0">Key Takeaways for Safe Operations</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <ul className="list-disc list-inside space-y-3 text-slate-300">
                 <li>Always verify your <strong>runway heading</strong> matches magnetic north.</li>
