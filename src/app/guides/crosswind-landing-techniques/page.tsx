@@ -6,6 +6,9 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/guides/crosswind-landing-techniques",
+  },
   title: "Crosswind Landing Technique | Wing-Low and Crab Methods",
   description: "Learn how to execute a perfect crosswind landing. Master the crab and wing-low techniques to stay centered on the runway.",
 };

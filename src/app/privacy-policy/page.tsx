@@ -2,6 +2,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
+  alternates: {
+    canonical: "/privacy-policy",
+  },
   title: "Privacy Policy | Crosswind Calculator",
   description: "Privacy Policy for Crosswind Calculator - an online tool for pilots.",
 };

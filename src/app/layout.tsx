@@ -14,6 +14,10 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://crosswindcalculator.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: "Crosswind Calculator | Aviation Reference Tool & Wind Components",
   description: "Estimate crosswind and headwind components. Free aviation reference tool for pilot awareness and pre-flight planning.",
   keywords: ["crosswind calculator", "wind components", "pilot tool", "aviation calculator", "headwind component", "aircraft limits"],
@@ -23,6 +27,20 @@ export const metadata: Metadata = {
     url: "https://crosswindcalculator.com",
     siteName: "Crosswind Calculator",
     type: "website",
+    images: [
+      {
+        url: "/assets/guide-illustrations/cessna-172.png",
+        width: 1200,
+        height: 630,
+        alt: "Crosswind Calculator",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Crosswind Calculator | Aviation Reference Tool",
+    description: "Estimate crosswind and headwind components. Reference tool for pilots.",
+    images: ["/assets/guide-illustrations/cessna-172.png"],
   },
 };
 

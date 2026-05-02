@@ -2,6 +2,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
+  alternates: {
+    canonical: "/terms-of-service",
+  },
   title: "Terms of Service | Crosswind Calculator",
   description: "Terms of Service for Crosswind Calculator - an online tool for pilots.",
 };

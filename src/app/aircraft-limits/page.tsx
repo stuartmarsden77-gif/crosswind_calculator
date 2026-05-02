@@ -5,6 +5,9 @@ import LegalDisclaimer from "@/components/LegalDisclaimer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/aircraft-limits",
+  },
   title: "Aircraft Crosswind Limits Database | Maximum Demonstrated Components",
   description: "Browse our database of maximum demonstrated crosswind components for common aircraft. General reference for situational awareness.",
 };

@@ -5,6 +5,9 @@ import SEOSection from "@/components/SEOSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/manual-guide",
+  },
   title: "Pilot's Manual Crosswind Calculation Guide | Clock Method",
   description: "Learn how to calculate crosswind components manually using trigonometry and the clock method. A vital skill for every pilot in the cockpit.",
 };

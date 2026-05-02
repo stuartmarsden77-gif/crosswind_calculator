@@ -6,6 +6,9 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/guides/density-altitude-impact",
+  },
   title: "Why Density Altitude Matters | Aircraft Performance",
   description: "High, hot, and heavy. Learn how density altitude impacts your aircraft's ability to climb and handle wind components.",
 };

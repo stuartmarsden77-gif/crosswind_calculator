@@ -6,6 +6,9 @@ import SEOSection from "@/components/SEOSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/density-altitude",
+  },
   title: "Determine Density Altitude | Aeronautical Performance Tool",
   description: "Estimate pressure and density altitude. Reference tool for pilot awareness of aircraft performance factors.",
 };

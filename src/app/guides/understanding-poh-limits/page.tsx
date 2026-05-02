@@ -6,6 +6,9 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/guides/understanding-poh-limits",
+  },
   title: "Understanding POH Limits | Aircraft CG and Navigation Specifications",
   description: "A comprehensive deep dive into Pilot's Operating Handbook boundaries, aircraft CG limitations, and critical navigation flight planning.",
 };

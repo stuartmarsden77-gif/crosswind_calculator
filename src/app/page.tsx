@@ -7,6 +7,9 @@ import Link from "next/link";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
   title: "Crosswind Calculator | Runway Wind, Headwind & Tailwind App",
   description: "Professional crosswind calculator for pilots. Calculate wind components, headwind, and tailwind for any runway heading using this precise aviation tool.",
 };
@@ -44,7 +47,7 @@ const faqSchema = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-mesh">
+    <div className="min-h-screen flex flex-col bg-mesh w-full overflow-x-hidden">
       <Navbar />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       

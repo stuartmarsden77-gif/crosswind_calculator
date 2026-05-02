@@ -6,6 +6,9 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/guides/mastering-the-clock-method",
+  },
   title: "Crosswind Calculations using the Clock Method",
   description: "Learn how to calculate a cross wind component in your head. Master quick crosswind calculation techniques purely for aviation safety without a calculator.",
 };

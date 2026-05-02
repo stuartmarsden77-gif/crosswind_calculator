@@ -6,6 +6,9 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/guides/how-to-calculate-crosswind",
+  },
   title: "Calculate Crosswind Components | Crosswind Calculation for Pilots",
   description: "Learn how to quickly calculate crosswind components. A full guide on crosswind calculations, component calculation, and runway headwind evaluation.",
 };
