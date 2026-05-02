@@ -50,12 +50,27 @@ export default function RootLayout({
       className={`${inter.variable} ${rajdhani.variable} h-full antialiased dark`}
     >
       <head>
+        {/* Google AdSense */}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5330100111318765" crossOrigin="anonymous"></script>
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-X748S6W9M3"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-X748S6W9M3');
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-slate-950 text-slate-200">
+      <body className="min-h-full flex flex-col bg-slate-950 text-slate-200 overflow-x-hidden w-full">
         {children}
       </body>
     </html>
