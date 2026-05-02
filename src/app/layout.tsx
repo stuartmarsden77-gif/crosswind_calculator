@@ -43,6 +43,15 @@ export const metadata: Metadata = {
     description: "Estimate crosswind and headwind components. Reference tool for pilots.",
     images: ["/assets/guide-illustrations/cessna-172.png"],
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/assets/logo/icon-dark.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/assets/logo/icon-dark.svg" },
+    ],
+  },
 };
 
 const jsonLd = {
