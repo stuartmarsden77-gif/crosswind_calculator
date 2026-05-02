@@ -59,8 +59,8 @@ export default function CrosswindCalculator() {
 
         {/* Action Table (Ad Placeholder Spirit) */}
         <div className="mt-8 p-4 border border-white/5 rounded-xl bg-white/[0.02]">
-           <p className="text-[10px] text-slate-600 uppercase tracking-widest mb-2 font-semibold">Pro Tip</p>
-           <p className="text-sm text-slate-400 italic">"Always verify your aircraft's max demonstrated crosswind component in the POH before takeoff."</p>
+           <p className="text-[10px] text-slate-400 uppercase tracking-widest mb-2 font-semibold">Pro Tip</p>
+           <p className="text-sm text-slate-300 italic">"Always verify your aircraft's max demonstrated crosswind component in the POH before takeoff."</p>
         </div>
       </div>
 
@@ -91,14 +91,14 @@ export default function CrosswindCalculator() {
 
           <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-end">
             <div>
-              <p className="text-[10px] text-slate-500 uppercase font-mono mb-1">Status</p>
+              <p className="text-[10px] text-slate-400 uppercase font-mono mb-1">Status</p>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 <span className="text-xs text-slate-300 font-medium">Calculation Synchronized</span>
               </div>
             </div>
             <div className="text-right">
-               <span className="text-[10px] text-slate-500 font-mono">VECTOR ANALYSIS V.3.1</span>
+               <span className="text-[10px] text-slate-400 font-mono">VECTOR ANALYSIS V.3.1</span>
             </div>
           </div>
         </Card>
@@ -116,18 +116,20 @@ function InputGroup({ label, value, onChange, unit, icon, min, max }: {
   min?: number;
   max?: number;
 }) {
+  const id = label.replace(/\s+/g, '-').toLowerCase();
   return (
     <div className="space-y-2 group">
       <div className="flex justify-between items-center px-1">
-        <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2 group-focus-within:text-cyan-400 transition-colors">
+        <label htmlFor={id} className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2 group-focus-within:text-cyan-400 transition-colors">
           {icon}
           {label}
         </label>
-        <span className="text-[10px] font-mono text-slate-500">{unit}</span>
+        <span className="text-[10px] font-mono text-slate-400">{unit}</span>
       </div>
       <div className="flex items-center gap-3">
         <input 
           type="range"
+          aria-label={`${label} range`}
           min={min}
           max={max}
           value={value}
@@ -135,6 +137,7 @@ function InputGroup({ label, value, onChange, unit, icon, min, max }: {
           className="flex-grow h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
         />
         <input 
+          id={id}
           type="number"
           value={value}
           onChange={(e) => onChange(parseInt(e.target.value) || 0)}
@@ -159,10 +162,10 @@ function ResultBox({ label, value, unit, subValue, warning }: {
         <span className={`text-2xl md:text-4xl font-bold font-mono tracking-tighter ${warning ? 'text-red-400' : 'text-white group-hover:text-cyan-400'} transition-colors`}>
           {value}
         </span>
-        <span className="text-xs font-mono text-slate-500">{unit}</span>
+        <span className="text-xs font-mono text-slate-400">{unit}</span>
       </div>
       {subValue && (
-        <p className="text-[10px] text-slate-500 mt-1 uppercase font-mono">{subValue}</p>
+        <p className="text-[10px] text-slate-400 mt-1 uppercase font-mono">{subValue}</p>
       )}
     </div>
   );

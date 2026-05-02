@@ -85,6 +85,7 @@ export default function Navbar() {
           <button 
             className="md:hidden text-slate-400 px-2 py-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {isMobileMenuOpen ? (
