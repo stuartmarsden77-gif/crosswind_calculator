@@ -11,12 +11,13 @@ export default function CrosswindCalculator() {
   const [runwayHeading, setRunwayHeading] = useState<number>(360);
   const [windDirection, setWindDirection] = useState<number>(270);
   const [windSpeed, setWindSpeed] = useState<number>(15);
+  const [windGust, setWindGust] = useState<number>(0);
   const [results, setResults] = useState<WindComponents | null>(null);
 
   useEffect(() => {
-    const res = calculateWindComponents(runwayHeading, windDirection, windSpeed);
+    const res = calculateWindComponents(runwayHeading, windDirection, windSpeed, windGust > 0 ? windGust : undefined);
     setResults(res);
-  }, [runwayHeading, windDirection, windSpeed]);
+  }, [runwayHeading, windDirection, windSpeed, windGust]);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -55,6 +56,15 @@ export default function CrosswindCalculator() {
             min={0}
             max={200}
           />
+          <InputGroup
+            label="Wind Gust (Optional)"
+            icon={<Wind className="w-4 h-4 text-slate-500" />}
+            value={windGust}
+            onChange={(val) => setWindGust(Math.min(200, Math.max(0, val)))}
+            unit="KTS"
+            min={0}
+            max={200}
+          />
         </div>
 
         {/* Action Table (Ad Placeholder Spirit) */}
@@ -70,23 +80,52 @@ export default function CrosswindCalculator() {
           {/* Decorative Grid Line */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-400/5 blur-3xl rounded-full -mr-16 -mt-16" />
           
-          <div className="grid grid-cols-2 gap-2 md:gap-4 mb-8">
-            <ResultBox 
-              label="Crosswind" 
-              value={results?.crosswind || 0} 
-              unit="KTS" 
-              subValue={results?.side !== "Direct" ? `${results?.side} Component` : "Direct Wind"}
-            />
-            <ResultBox 
-              label={results?.isTailwind ? "Tailwind" : "Headwind"} 
-              value={results?.headwind || 0} 
-              unit="KTS" 
-              warning={results?.isTailwind}
-            />
+          <div className="mb-8">
+            <div className="grid grid-cols-2 gap-2 md:gap-4">
+              <ResultBox 
+                label="Crosswind" 
+                value={results?.crosswind || 0} 
+                unit="KTS" 
+                subValue={results?.side !== "Direct" ? `${results?.side} Component` : "Direct Wind"}
+              />
+              <ResultBox 
+                label={results?.isTailwind ? "Tailwind" : "Headwind"} 
+                value={results?.headwind || 0} 
+                unit="KTS" 
+                warning={results?.isTailwind}
+              />
+            </div>
+            
+            <AnimatePresence>
+              {results?.crosswindGust && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                  animate={{ opacity: 1, height: 'auto', marginTop: '1rem' }}
+                  exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                  className="grid grid-cols-2 gap-2 md:gap-4 overflow-hidden"
+                >
+                  <ResultBox 
+                    label="Gust Crosswind" 
+                    value={results?.crosswindGust} 
+                    unit="KTS" 
+                    subValue="Peak Component"
+                    warning={true}
+                    size="small"
+                  />
+                  <ResultBox 
+                    label={`Gust ${results?.isTailwind ? "Tailwind" : "Headwind"}`} 
+                    value={results?.headwindGust || 0} 
+                    unit="KTS" 
+                    warning={true}
+                    size="small"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           <div className="flex-grow flex items-center justify-center py-4">
-             <WindSchematic runwayHeading={runwayHeading} windDirection={windDirection} />
+             <WindSchematic runwayHeading={runwayHeading} windDirection={windDirection} showGust={!!results?.crosswindGust} />
           </div>
 
           <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-end">
@@ -148,21 +187,22 @@ function InputGroup({ label, value, onChange, unit, icon, min, max }: {
   );
 }
 
-function ResultBox({ label, value, unit, subValue, warning }: {
+function ResultBox({ label, value, unit, subValue, warning, size = "large" }: {
   label: string;
   value: number;
   unit: string;
   subValue?: string;
   warning?: boolean;
+  size?: "large" | "small";
 }) {
   return (
-    <div className="bg-white/5 rounded-xl p-5 border border-white/5 group hover:border-cyan-400/20 transition-all duration-500">
-      <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">{label}</p>
+    <div className={`bg-white/5 rounded-xl border border-white/5 group hover:border-cyan-400/20 transition-all duration-500 ${size === 'small' ? 'p-3 md:p-4' : 'p-5'}`}>
+      <p className={`font-semibold text-slate-400 uppercase tracking-widest mb-1 ${size === 'small' ? 'text-[10px]' : 'text-xs'}`}>{label}</p>
       <div className="flex items-baseline gap-2">
-        <span className={`text-2xl md:text-4xl font-bold font-mono tracking-tighter ${warning ? 'text-red-400' : 'text-white group-hover:text-cyan-400'} transition-colors`}>
+        <span className={`font-bold font-mono tracking-tighter ${warning ? 'text-red-400' : 'text-white group-hover:text-cyan-400'} transition-colors ${size === 'small' ? 'text-xl md:text-2xl' : 'text-2xl md:text-4xl'}`}>
           {value}
         </span>
-        <span className="text-xs font-mono text-slate-400">{unit}</span>
+        <span className={`font-mono text-slate-400 ${size === 'small' ? 'text-[10px]' : 'text-xs'}`}>{unit}</span>
       </div>
       {subValue && (
         <p className="text-[10px] text-slate-400 mt-1 uppercase font-mono">{subValue}</p>

@@ -9,12 +9,15 @@ export interface WindComponents {
   headwind: number;
   isTailwind: boolean;
   side: "Left" | "Right" | "Direct";
+  crosswindGust?: number;
+  headwindGust?: number;
 }
 
 export function calculateWindComponents(
   runwayHeading: number,
   windDirection: number,
-  windSpeed: number
+  windSpeed: number,
+  windGust?: number
 ): WindComponents {
   // Normalize angles to 0-360
   const normalizedRunway = runwayHeading % 360;
@@ -36,12 +39,19 @@ export function calculateWindComponents(
   if (diff > 5 && diff < 175) side = "Right";
   else if (diff < -5 && diff > -175) side = "Left";
 
-  return {
+  const result: WindComponents = {
     crosswind: parseFloat(crosswind.toFixed(1)),
     headwind: parseFloat(headwind.toFixed(1)),
     isTailwind,
     side,
   };
+
+  if (windGust && windGust > windSpeed) {
+    result.crosswindGust = parseFloat(Math.abs(windGust * Math.sin(diffRad)).toFixed(1));
+    result.headwindGust = parseFloat(Math.abs(windGust * Math.cos(diffRad)).toFixed(1));
+  }
+
+  return result;
 }
 
 export function calculateDensityAltitude(

@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 interface SchematicProps {
   runwayHeading: number;
   windDirection: number;
+  showGust?: boolean;
 }
 
-export default function WindSchematic({ runwayHeading, windDirection }: SchematicProps) {
+export default function WindSchematic({ runwayHeading, windDirection, showGust }: SchematicProps) {
   // Relative wind angle for the schematic
   const relativeAngle = windDirection - runwayHeading;
 
@@ -40,7 +41,12 @@ export default function WindSchematic({ runwayHeading, windDirection }: Schemati
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
       >
         {/* Arrow Body */}
-        <div className="w-1 h-24 bg-cyan-400 glow-cyan rounded-full" />
+        <div className="relative flex flex-col items-center w-full">
+          {showGust && (
+            <div className="absolute bottom-full mb-1 w-1 h-8 border-l-2 border-dashed border-cyan-400/80 rounded-t-full animate-pulse" />
+          )}
+          <div className="w-1 h-24 bg-cyan-400 glow-cyan rounded-full" />
+        </div>
         {/* Arrow Head */}
         <div className="w-4 h-4 -mt-1 border-t-4 border-l-4 border-cyan-400 rotate-45 rounded-sm" />
         
