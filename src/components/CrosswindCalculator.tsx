@@ -8,14 +8,19 @@ import Card from "./Card";
 import WindSchematic from "./WindSchematic";
 
 export default function CrosswindCalculator() {
-  const [runwayHeading, setRunwayHeading] = useState<number>(360);
-  const [windDirection, setWindDirection] = useState<number>(270);
-  const [windSpeed, setWindSpeed] = useState<number>(15);
-  const [windGust, setWindGust] = useState<number>(0);
+  const [runwayHeading, setRunwayHeading] = useState<number | ''>(360);
+  const [windDirection, setWindDirection] = useState<number | ''>(270);
+  const [windSpeed, setWindSpeed] = useState<number | ''>(15);
+  const [windGust, setWindGust] = useState<number | ''>(0);
   const [results, setResults] = useState<WindComponents | null>(null);
 
   useEffect(() => {
-    const res = calculateWindComponents(runwayHeading, windDirection, windSpeed, windGust > 0 ? windGust : undefined);
+    const heading = typeof runwayHeading === 'number' ? runwayHeading : 0;
+    const direction = typeof windDirection === 'number' ? windDirection : 0;
+    const speed = typeof windSpeed === 'number' ? windSpeed : 0;
+    const gust = typeof windGust === 'number' && windGust > 0 ? windGust : undefined;
+
+    const res = calculateWindComponents(heading, direction, speed, gust);
     setResults(res);
   }, [runwayHeading, windDirection, windSpeed, windGust]);
 
@@ -33,7 +38,7 @@ export default function CrosswindCalculator() {
             label="Runway Heading"
             icon={<Navigation2 className="w-4 h-4" />}
             value={runwayHeading}
-            onChange={(val) => setRunwayHeading(Math.min(360, Math.max(1, val)))}
+            onChange={setRunwayHeading}
             unit="DEG"
             min={1}
             max={360}
@@ -42,7 +47,7 @@ export default function CrosswindCalculator() {
             label="Wind Direction"
             icon={<Compass className="w-4 h-4" />}
             value={windDirection}
-            onChange={(val) => setWindDirection(Math.min(360, Math.max(1, val)))}
+            onChange={setWindDirection}
             unit="DEG"
             min={1}
             max={360}
@@ -51,7 +56,7 @@ export default function CrosswindCalculator() {
             label="Wind Speed"
             icon={<Wind className="w-4 h-4" />}
             value={windSpeed}
-            onChange={(val) => setWindSpeed(Math.min(200, Math.max(0, val)))}
+            onChange={setWindSpeed}
             unit="KTS"
             min={0}
             max={200}
@@ -60,7 +65,7 @@ export default function CrosswindCalculator() {
             label="Wind Gust (Optional)"
             icon={<Wind className="w-4 h-4 text-slate-500" />}
             value={windGust}
-            onChange={(val) => setWindGust(Math.min(200, Math.max(0, val)))}
+            onChange={setWindGust}
             unit="KTS"
             min={0}
             max={200}
@@ -125,7 +130,11 @@ export default function CrosswindCalculator() {
           </div>
 
           <div className="flex-grow flex items-center justify-center py-4">
-             <WindSchematic runwayHeading={runwayHeading} windDirection={windDirection} showGust={!!results?.crosswindGust} />
+             <WindSchematic 
+               runwayHeading={typeof runwayHeading === 'number' ? runwayHeading : 0} 
+               windDirection={typeof windDirection === 'number' ? windDirection : 0} 
+               showGust={!!results?.crosswindGust} 
+             />
           </div>
 
           <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-end">
@@ -148,13 +157,24 @@ export default function CrosswindCalculator() {
 
 function InputGroup({ label, value, onChange, unit, icon, min, max }: {
   label: string;
-  value: number;
-  onChange: (val: number) => void;
+  value: number | '';
+  onChange: (val: number | '') => void;
   unit: string;
   icon: React.ReactNode;
   min?: number;
   max?: number;
 }) {
+  const [localValue, setLocalValue] = useState<string>(value.toString());
+  const [isTextInputFocused, setIsTextInputFocused] = useState(false);
+
+  useEffect(() => {
+    if (value === '') {
+      if (localValue !== '') setLocalValue('');
+    } else if (parseInt(localValue, 10) !== value) {
+      setLocalValue(value.toString());
+    }
+  }, [value, localValue]);
+
   const id = label.replace(/\s+/g, '-').toLowerCase();
   return (
     <div className="space-y-2 group">
@@ -171,15 +191,45 @@ function InputGroup({ label, value, onChange, unit, icon, min, max }: {
           aria-label={`${label} range`}
           min={min}
           max={max}
-          value={value}
-          onChange={(e) => onChange(parseInt(e.target.value))}
+          value={value === '' ? (min || 0) : value}
+          onChange={(e) => {
+            if (isTextInputFocused) return;
+            const val = parseInt(e.target.value, 10);
+            if (!isNaN(val)) {
+              onChange(val);
+            }
+          }}
           className="flex-grow h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
         />
         <input 
           id={id}
           type="number"
-          value={value}
-          onChange={(e) => onChange(parseInt(e.target.value) || 0)}
+          value={localValue}
+          onFocus={() => setIsTextInputFocused(true)}
+          onChange={(e) => {
+            setLocalValue(e.target.value);
+            if (e.target.value === '') {
+              onChange('');
+            } else {
+              const parsed = parseInt(e.target.value, 10);
+              if (!isNaN(parsed)) onChange(parsed);
+            }
+          }}
+          onBlur={() => {
+            setIsTextInputFocused(false);
+            if (localValue !== '') {
+              let parsed = parseInt(localValue, 10);
+              if (!isNaN(parsed)) {
+                if (min !== undefined) parsed = Math.max(min, parsed);
+                if (max !== undefined) parsed = Math.min(max, parsed);
+                onChange(parsed);
+                setLocalValue(parsed.toString());
+              } else {
+                onChange('');
+                setLocalValue('');
+              }
+            }
+          }}
           className="w-20 bg-slate-900 border border-white/10 rounded-lg px-3 py-2 text-sm font-mono text-white focus:outline-none focus:border-cyan-400/50 transition-all shadow-inner"
         />
       </div>
