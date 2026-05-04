@@ -29,7 +29,7 @@ export default function CrosswindCalculator() {
       <div className="flex items-center gap-2 px-1">
         <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
         <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">
-          System Update: May 4, 2026 • Performance & Input Patch v3.1.2
+          System Updated: May 4, 2026 • Performance & Input Patch v3.1.2
         </p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
