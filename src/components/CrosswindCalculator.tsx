@@ -25,7 +25,14 @@ export default function CrosswindCalculator() {
   }, [runwayHeading, windDirection, windSpeed, windGust]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div className="space-y-4">
+      <div className="flex items-center gap-2 px-1">
+        <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+        <p className="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">
+          System Update: May 4, 2026 • Performance & Input Patch v3.1.2
+        </p>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       {/* Inputs Section */}
       <div className="lg:col-span-5 space-y-6">
         <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
@@ -150,6 +157,7 @@ export default function CrosswindCalculator() {
             </div>
           </div>
         </Card>
+      </div>
       </div>
     </div>
   );
