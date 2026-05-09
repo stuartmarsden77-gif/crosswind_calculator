@@ -4,6 +4,8 @@ import Image from "next/image";
 import SEOSection from "@/components/SEOSection";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
 import { Metadata } from "next";
+import Link from "next/link";
+import { ChevronLeft } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: {
@@ -44,6 +46,13 @@ export default function Cessna172Limits() {
       
       <main className="flex-grow pt-24 pb-24">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <Link 
+            href="/aircraft-limits" 
+            className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 group"
+          >
+            <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Aircraft Limits
+          </Link>
           
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16 border-b border-white/5 pb-16">
             <div>

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Card from "@/components/Card";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: {
@@ -50,7 +51,15 @@ export default function AircraftLimits() {
                 <tbody className="divide-y divide-white/5">
                   {aircraftData.map((ac) => (
                     <tr key={ac.type} className="hover:bg-white/[0.02] transition-colors group">
-                      <td className="px-8 py-6 text-slate-300 font-medium group-hover:text-white transition-colors">{ac.type}</td>
+                      <td className="px-8 py-6 text-slate-300 font-medium group-hover:text-white transition-colors">
+                        {ac.type === "Cessna 172 Skyhawk" ? (
+                          <Link href="/aircraft-limits/cessna-172" className="text-cyan-400 hover:underline">
+                            {ac.type}
+                          </Link>
+                        ) : (
+                          ac.type
+                        )}
+                      </td>
                       <td className="px-8 py-6">
                         <span className="px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-400 text-xs font-mono border border-cyan-400/20">
                           {ac.limit}
