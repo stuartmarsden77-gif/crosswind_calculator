@@ -63,7 +63,7 @@ export default function UnderstandingPohLimits() {
 
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-square max-w-2xl mx-auto w-full mb-12">
               <Image 
-                src="/assets/guide-illustrations/poh_limits.avif"
+                src="/assets/guide-illustrations/poh_limits_annotated.png"
                 alt="Detailed view of an open Pilot's Operating Handbook showing weight and balance limits alongside navigation charts"
                 fill
                 className="object-cover"

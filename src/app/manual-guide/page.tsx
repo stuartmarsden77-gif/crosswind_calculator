@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Card from "@/components/Card";
 import SEOSection from "@/components/SEOSection";
+import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -61,6 +62,15 @@ export default function ManualGuide() {
               <p className="text-slate-400 text-lg">
                 In a high-workload environment, pilots use the "Clock Method" for a rapid approximation. This uses 60 minutes of a clock face to determine how much of the total wind acts as a crosswind:
               </p>
+
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-square max-w-2xl mx-auto w-full mb-12">
+                <Image 
+                  src="/assets/guide-illustrations/clock_method_annotated.png"
+                  alt="Aviation Clock Method for mental crosswind calculation"
+                  fill
+                  className="object-cover"
+                />
+              </div>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <ClockStep angle="15°" fraction="1/4" time="15m" />

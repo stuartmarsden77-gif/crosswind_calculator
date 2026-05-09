@@ -71,7 +71,7 @@ export default function DensityAltitudeImpact() {
 
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-square max-w-2xl mx-auto w-full mb-12">
               <Image 
-                src="/assets/guide-illustrations/density_altitude.avif"
+                src="/assets/guide-illustrations/density_altitude_annotated.png"
                 alt="Aircraft altitude vs performance chart"
                 fill
                 className="object-cover"

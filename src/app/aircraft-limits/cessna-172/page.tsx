@@ -76,7 +76,7 @@ export default function Cessna172Limits() {
             
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-square w-full shadow-2xl">
               <Image 
-                src="/assets/guide-illustrations/cessna-172.png"
+                src="/assets/guide-illustrations/cessna_172_annotated.png"
                 alt="A sleek conceptual illustration of a Cessna 172 flying through complex atmospheric weather systems"
                 fill
                 className="object-cover"

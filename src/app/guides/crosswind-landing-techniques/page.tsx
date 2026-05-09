@@ -63,7 +63,7 @@ export default function CrosswindLandingTechniques() {
 
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-square max-w-2xl mx-auto w-full mb-12">
               <Image 
-                src="/assets/guide-illustrations/crosswind_landing.avif"
+                src="/assets/guide-illustrations/crosswind_landing_annotated.png"
                 alt="Diagram showing crab and sideslip landing techniques"
                 fill
                 className="object-cover"

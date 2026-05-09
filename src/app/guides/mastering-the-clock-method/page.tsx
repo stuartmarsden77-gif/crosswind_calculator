@@ -63,7 +63,7 @@ export default function ClockMethod() {
 
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-square max-w-2xl mx-auto w-full mb-12">
               <Image 
-                src="/assets/guide-illustrations/clock_method.avif"
+                src="/assets/guide-illustrations/clock_method_annotated.png"
                 alt="Diagram showing the aviation clock method for wind vector calculation"
                 fill
                 className="object-cover"

@@ -71,7 +71,7 @@ export default function HowToCalculateCrosswind() {
 
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-square max-w-2xl mx-auto w-full mb-12">
               <Image 
-                src="/assets/guide-illustrations/calculate_crosswind.avif"
+                src="/assets/guide-illustrations/calculate_crosswind_annotated.png"
                 alt="Wind vector decomposition diagram for crosswind calculation"
                 fill
                 className="object-cover"

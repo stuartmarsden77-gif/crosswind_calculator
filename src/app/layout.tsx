@@ -15,9 +15,9 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://crosswindcalculator.com"),
+  metadataBase: new URL("https://www.crosswindcalculator.com"),
   alternates: {
-    canonical: "/",
+    canonical: "./",
   },
   title: "Crosswind Calculator | Aviation Reference Tool & Wind Components",
   description: "Estimate crosswind and headwind components. Free aviation reference tool for pilot awareness and pre-flight planning.",
@@ -25,12 +25,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Crosswind Calculator | Aviation Reference Tool",
     description: "Estimate crosswind and headwind components. Reference tool for pilots.",
-    url: "https://crosswindcalculator.com",
+    url: "https://www.crosswindcalculator.com",
     siteName: "Crosswind Calculator",
     type: "website",
     images: [
       {
-        url: "/assets/guide-illustrations/cessna-172.png",
+        url: "/assets/guide-illustrations/cessna_172_annotated.png",
         width: 1200,
         height: 630,
         alt: "Crosswind Calculator",
@@ -41,15 +41,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Crosswind Calculator | Aviation Reference Tool",
     description: "Estimate crosswind and headwind components. Reference tool for pilots.",
-    images: ["/assets/guide-illustrations/cessna-172.png"],
+    images: ["/assets/guide-illustrations/cessna_172_annotated.png"],
   },
   icons: {
     icon: [
-      { url: "/favicon.ico" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
       { url: "/assets/logo/icon-dark.svg", type: "image/svg+xml" },
     ],
     apple: [
-      { url: "/assets/logo/icon-dark.svg" },
+      { url: "/apple-icon.png", type: "image/png", sizes: "512x512" },
     ],
   },
 };
@@ -58,11 +59,11 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Crosswind Calculator",
-  "url": "https://crosswindcalculator.com",
+  "url": "https://www.crosswindcalculator.com",
   "description": "Aviation reference tool for estimating crosswind and headwind components.",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://crosswindcalculator.com/?q={search_term_string}",
+    "target": "https://www.crosswindcalculator.com/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 };
