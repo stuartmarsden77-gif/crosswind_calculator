@@ -24,9 +24,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export async function generateStaticParams() {
-  return aircraftDatabase.map((ac) => ({
-    slug: ac.slug,
-  }));
+  const dedicatedPages = ['cessna-172', 'cessna-182', 'cirrus-sr22', 'piper-pa28'];
+  return aircraftDatabase
+    .filter((ac) => !dedicatedPages.includes(ac.slug))
+    .map((ac) => ({
+      slug: ac.slug,
+    }));
 }
 
 export default function AircraftLimitPage({ params }: { params: { slug: string } }) {
