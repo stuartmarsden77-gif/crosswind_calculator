@@ -32,6 +32,7 @@ export default function Navbar() {
         { name: "POH Limits Explained", href: "/guides/understanding-poh-limits" },
         { name: "Density Altitude Impact", href: "/guides/density-altitude-impact" },
         { name: "The Clock Method", href: "/guides/mastering-the-clock-method" },
+        { name: "Best Calculators 2026", href: "/guides/best-crosswind-calculators" },
       ],
     },
   ];

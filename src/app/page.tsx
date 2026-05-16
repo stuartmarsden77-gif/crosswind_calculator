@@ -10,8 +10,22 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  title: "Crosswind Calculator | Runway Wind, Headwind & Tailwind App",
-  description: "Professional crosswind calculator for pilots. Calculate wind components, headwind, and tailwind for any runway heading using this precise aviation tool.",
+  title: "Crosswind Calculator | Instant Runway Wind & Headwind Tool",
+  description: "The most precise crosswind calculator for pilots. Calculate wind components, headwind, and tailwind instantly for any runway heading. Free aviation utility.",
+};
+
+const toolSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Crosswind Calculator",
+  "operatingSystem": "Web",
+  "applicationCategory": "AviationApp",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Precision crosswind calculator for pilots. Calculate wind components, headwind, and tailwind instantly for any runway heading."
 };
 
 const faqSchema = {
@@ -49,6 +63,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-mesh w-full overflow-x-hidden">
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       
       <main className="flex-grow">

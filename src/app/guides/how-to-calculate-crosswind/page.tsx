@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/guides/how-to-calculate-crosswind",
   },
-  title: "Calculate Crosswind Components | Crosswind Calculation for Pilots",
-  description: "Learn how to quickly calculate crosswind components. A full guide on crosswind calculations, component calculation, and runway headwind evaluation.",
+  title: "How to Calculate Crosswind: Formula & Mental Math for Pilots",
+  description: "Master crosswind calculation using trigonometry and the 60-to-1 'Clock Method'. A definitive guide for flight students and professional aviators.",
 };
 
 const faqSchema = {
@@ -83,6 +83,7 @@ export default function HowToCalculateCrosswind() {
               <ul className="list-disc list-inside space-y-2 text-slate-300 m-0">
                 <li>Every <strong>crosswind calculation for pilots</strong> requires knowing the exact <strong>wind direction</strong> and <strong>runway heading</strong>.</li>
                 <li>To <strong>calculate crosswind</strong> components, you <strong>multiply</strong> the <strong>wind speed</strong> by the <strong>sine</strong> of your specific wind angle.</li>
+                <li>Check your computed results against the <Link href="/aircraft-limits" className="text-cyan-400 hover:underline font-bold">Aircraft Limits Database</Link> to ensure safe operations.</li>
                 <li>A complete <strong>calculation</strong> also yields the exact <strong>headwind</strong> or tailwind value acting along your flight path.</li>
                 <li>Pilots can quickly calculate these critical metrics using trigonometry or a digital <strong>calculator</strong>.</li>
               </ul>

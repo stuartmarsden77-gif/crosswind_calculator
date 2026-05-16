@@ -9,8 +9,22 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/density-altitude",
   },
-  title: "Determine Density Altitude | Aeronautical Performance Tool",
-  description: "Estimate pressure and density altitude. Reference tool for pilot awareness of aircraft performance factors.",
+  title: "Density Altitude Calculator | Aviation Performance Tool",
+  description: "Calculate pressure and density altitude instantly. Essential tool for pilots to assess aircraft takeoff and climb performance in high, hot, and humid conditions.",
+};
+
+const toolSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Density Altitude Calculator",
+  "operatingSystem": "Web",
+  "applicationCategory": "AviationApp",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Calculate pressure and density altitude instantly. Assess aircraft takeoff and climb performance in non-standard conditions."
 };
 
 const faqSchema = {
@@ -40,6 +54,7 @@ export default function DensityAltitude() {
   return (
     <div className="min-h-screen flex flex-col bg-mesh">
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       
       <main className="flex-grow pt-24 pb-24">

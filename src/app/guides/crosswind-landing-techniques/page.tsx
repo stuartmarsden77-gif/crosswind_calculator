@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/guides/crosswind-landing-techniques",
   },
-  title: "Crosswind Landing Technique | Wing-Low and Crab Methods",
-  description: "Learn how to execute a perfect crosswind landing. Master the crab and wing-low techniques to stay centered on the runway.",
+  title: "Master Crosswind Landings: Crab vs Sideslip Techniques",
+  description: "Learn how to execute a perfect crosswind landing. Step-by-step guide to the crab and wing-low (sideslip) methods for safe arrivals in any wind.",
 };
 
 const faqSchema = {
@@ -76,7 +76,7 @@ export default function CrosswindLandingTechniques() {
                 <li>A <strong>crosswind landing</strong> requires separating <strong>rudder and aileron</strong> inputs to eliminate lateral <strong>drift</strong>.</li>
                 <li>The <strong>crab</strong> procedure points the nose into the wind, translating into a straight path over the physical ground.</li>
                 <li>The <strong>wing-low</strong> methodology banks the <strong>aircraft</strong> to stop lateral movement while pressing the rudder to align the nose straight forward.</li>
-                <li>Every certified <strong>aircraft</strong> features a specific <strong>demonstrated crosswind</strong> component limit.</li>
+                <li>Check your <Link href="/aircraft-limits" className="text-cyan-400 hover:underline font-bold">Aircraft Limits</Link> before attempting landings in challenging conditions.</li>
               </ul>
             </div>
 

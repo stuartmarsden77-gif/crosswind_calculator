@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/guides/understanding-poh-limits",
   },
-  title: "Understanding POH Limits | Aircraft CG and Navigation Specifications",
-  description: "A comprehensive deep dive into Pilot's Operating Handbook boundaries, aircraft CG limitations, and critical navigation flight planning.",
+  title: "Aircraft POH Limits Guide: Weight, Balance & V-Speeds",
+  description: "Learn how to interpret Pilot's Operating Handbook (POH) boundaries. Guide to weight and balance, V-speeds, and emergency procedures for safe flight.",
 };
 
 const faqSchema = {
@@ -76,6 +76,7 @@ export default function UnderstandingPohLimits() {
                 <li>A strict baseline <strong>POH</strong> dictates explicit bounds regarding an <strong>aircraft</strong> maximum safe capabilities.</li>
                 <li>Failing to obey a documented <strong>limitation</strong> compromises critical safety.</li>
                 <li>Proper baseline <strong>weight and balance</strong> arithmetic fundamentally shapes airframe stability.</li>
+                <li>Check our <Link href="/aircraft-limits" className="text-cyan-400 hover:underline font-bold">Aircraft Limits Database</Link> for common manufacturer benchmarks.</li>
                 <li>An explicit factory generated <strong>checklist</strong> prevents deadly human memory failures.</li>
                 <li>Regularly confirming <strong>fuel</strong> consumption parameters ensures complete mission validity.</li>
               </ul>
@@ -230,4 +231,3 @@ export default function UnderstandingPohLimits() {
     </div>
   );
 }
-

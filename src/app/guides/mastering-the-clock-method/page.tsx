@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/guides/mastering-the-clock-method",
   },
-  title: "Crosswind Calculations using the Clock Method",
-  description: "Learn how to calculate a cross wind component in your head. Master quick crosswind calculation techniques purely for aviation safety without a calculator.",
+  title: "The Clock Method: Quick Mental Crosswind Calculation",
+  description: "Learn the 'Clock Method' for rapid mental crosswind calculation in the cockpit. Essential mental math for pilots without using a calculator.",
 };
 
 const faqSchema = {
@@ -76,7 +76,7 @@ export default function ClockMethod() {
                 <li>A visual <strong>clock face</strong> provides simple fractional math to quickly <strong>calculate the crosswind component</strong> reliably in flight.</li>
                 <li>At carefully measured <strong>60 degrees</strong> (60 minutes) or greater, the <strong>crosswind component</strong> exactly equals the total pure <strong>wind speed</strong>.</li>
                 <li>At <strong>30 degrees</strong> (30 minutes), you simply <strong>multiply</strong> your speed by exactly one half (the sine of 30 degrees).</li>
-                <li>The final computed number determines if the incoming wind safely exceeds your <strong>aircraft</strong> maximum <strong>demonstrated crosswind</strong> rating limits.</li>
+                <li>Compare your results with the <Link href="/aircraft-limits" className="text-cyan-400 hover:underline font-bold">Aircraft Limits Database</Link> to verify safety margins.</li>
               </ul>
             </div>
 

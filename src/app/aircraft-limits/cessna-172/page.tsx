@@ -137,7 +137,7 @@ export default function Cessna172Limits() {
                 </p>
 
                 <h3 className="text-white text-xl font-bold mt-8 mb-4">The Secret to Flawless Alignment:</h3>
-                <p>Establishing a crossed-controlled slip involves separating your physical flight controls into two distinct roles:</p>
+                <p>Establishing a crossed-controlled slip involves separating your physical flight controls into two distinct roles (as detailed in our <Link href="/guides/crosswind-landing-techniques" className="text-cyan-400 hover:underline">landing techniques guide</Link>):</p>
                 
                 <ul className="space-y-4 my-6">
                   <li className="flex gap-4 items-start">
@@ -159,7 +159,7 @@ export default function Cessna172Limits() {
             <div id="weather">
               <SEOSection title="Wind Speed and Geometric Analysis">
                 <p>
-                  A tower controller broadcasts the current <strong>wind speed</strong> and magnetic direction. Safe execution requires decomposing this raw vector into an actionable <strong>crosswind component</strong>. 
+                  A tower controller broadcasts the current <strong>wind speed</strong> and magnetic direction. Safe execution requires decomposing this raw vector into an actionable <strong>crosswind component</strong>. You can use our <Link href="/guides/how-to-calculate-crosswind" className="text-cyan-400 hover:underline">step-by-step calculation guide</Link> to master this process.
                 </p>
 
                 <div className="overflow-hidden rounded-xl border border-white/10 my-8">

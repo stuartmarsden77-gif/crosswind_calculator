@@ -45,6 +45,7 @@ export default function Footer() {
               <li><Link href="/guides/crosswind-landing-techniques" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Landing Techniques</Link></li>
               <li><Link href="/guides/density-altitude-impact" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Density Altitude Guide</Link></li>
               <li><Link href="/guides/understanding-poh-limits" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">POH Limits</Link></li>
+              <li><Link href="/guides/best-crosswind-calculators" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Best Calculators 2026</Link></li>
             </ul>
           </div>
 

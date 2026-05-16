@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/guides/density-altitude-impact",
   },
-  title: "Why Density Altitude Matters | Aircraft Performance",
-  description: "High, hot, and heavy. Learn how density altitude impacts your aircraft's ability to climb and handle wind components.",
+  title: "Density Altitude Impact: Aircraft Performance & Safety Guide",
+  description: "High, hot, and heavy. Learn how density altitude impacts climb rates, takeoff distance, and aircraft handling in our comprehensive safety guide.",
 };
 
 const faqSchema = {
@@ -84,7 +84,7 @@ export default function DensityAltitudeImpact() {
                 <li><strong>Density altitude is pressure altitude corrected</strong> for nonstandard temperature variations.</li>
                 <li>As <strong>air density decreases</strong>, aircraft lift and thrust drop significantly.</li>
                 <li>Hot days, high physical elevations, and <strong>high humidity</strong> drastically <strong>increase density altitude</strong>.</li>
-                <li>A complete pre-flight check requires you to <strong>calculate density altitude</strong> to confirm <strong>takeoff distance</strong> limits.</li>
+                <li>Verify your <Link href="/aircraft-limits" className="text-cyan-400 hover:underline font-bold">performance limits</Link> when operating in high, hot, and heavy conditions.</li>
               </ul>
             </div>
 
