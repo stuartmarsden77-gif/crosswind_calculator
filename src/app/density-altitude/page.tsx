@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import DensityAltitudeContent from "@/components/DensityAltitudeContent";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
 import SEOSection from "@/components/SEOSection";
+import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
