@@ -23,14 +23,14 @@ export default function PrivacyPolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">1. Information Collection</h2>
             <p className="text-slate-300 leading-relaxed">
-              We do not collect any personal information when you use the Crosswind Calculator tool. All calculations are performed on your local device.
+              We do not collect any personal data when you use the Crosswind Calculator tool. All calculations are performed on your local device.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">2. Cookies and Tracking</h2>
             <p className="text-slate-300 leading-relaxed">
-              We may use essential cookies and basic analytics to understand how our tool is used and to improve its functionality. These do not track personal identifying information.
+              We may use key cookies and basic analytics to understand how our tool is used and to improve its functionality. These do not track personal identifying data.
             </p>
           </section>
         </div>

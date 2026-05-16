@@ -157,7 +157,7 @@ export default function CrosswindLandingTechniques() {
                   A <strong>pilot</strong> must respect these figures. If the <strong>crosswinds</strong> at the airport exceed your limits, or even your personal comfort level, you should look for a different runway. Safety in aviation is built on recognizing when the conditions outweigh the <strong>maneuver</strong> capability of the operator.
                 </p>
                 <p>
-                  Consistent practice of both the <strong>crab</strong> and <strong>wing-low</strong> techniques is essential. By understanding the <strong>rudder and aileron</strong> relationship, you can master any <strong>maneuver</strong>. Always remember to <strong>keep the nose aligned</strong>, stay <strong>nose aligned with the runway</strong>, and fly the plane all the way to a full stop.
+                  Consistent practice of both the <strong>crab</strong> and <strong>wing-low</strong> techniques is key. By decomposing the <strong>rudder and aileron</strong> relationship, you can master any <strong>maneuver</strong>. Always remember to <strong>keep the nose aligned</strong>, stay <strong>nose aligned with the runway</strong>, and fly the plane all the way to a full stop.
                 </p>
               </SEOSection>
             </div>

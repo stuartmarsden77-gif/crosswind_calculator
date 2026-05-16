@@ -30,7 +30,7 @@ export default function TermsOfService() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">2. Disclaimer of Liability</h2>
             <p className="text-slate-300 leading-relaxed">
-              The tools and information provided on this site are for reference and educational purposes only. You agree that Crosswind Calculator assumes no liability for errors or omissions. Pilots are solely responsible for ensuring the safety of flight and verifying all limits with official documentation.
+              The tools and data provided on this site are for reference and educational purposes only. You agree that Crosswind Calculator assumes no liability for errors or omissions. Pilots are solely responsible for ensuring the safety of flight and verifying all limits with official documentation.
             </p>
           </section>
         </div>

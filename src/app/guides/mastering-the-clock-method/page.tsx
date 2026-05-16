@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: "/guides/mastering-the-clock-method",
   },
   title: "The Clock Method: Quick Mental Crosswind Calculation",
-  description: "Learn the 'Clock Method' for rapid mental crosswind calculation in the cockpit. Essential mental math for pilots without using a calculator.",
+  description: "Learn the 'Clock Method' for rapid mental crosswind calculation in the cockpit. Key mental math for pilots without using a calculator.",
 };
 
 const faqSchema = {
@@ -155,7 +155,7 @@ export default function ClockMethod() {
             <div id="headwind">
               <SEOSection title="Determining Headwind and Tailwind Components">
                 <p>
-                  While the <strong>crosswind component</strong> is vital for lateral control, the <strong>headwind</strong> or <strong>tailwind</strong> determines your ground speed and landing distance. You can use a similar "reverse clock" logic, or simply remember that for small angles (less than 30 degrees), almost all of the <strong>wind</strong> is a headwind.
+                  While the <strong>crosswind component</strong> is critical for lateral control, the <strong>headwind</strong> or <strong>tailwind</strong> determines your ground speed and landing distance. You can use a similar "reverse clock" logic, or simply remember that for small angles (less than 30 degrees), almost all of the <strong>wind</strong> is a headwind.
                 </p>
                 <p>
                   For an angle of 0 degrees, the headwind is 100%. At 60 degrees off the nose, the headwind is roughly half the total speed. Knowing how to <strong>calculate crosswind</strong> often makes estimating the headwind redundant, as crosswind is usually the limiting safety factor.

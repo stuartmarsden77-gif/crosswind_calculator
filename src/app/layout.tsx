@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     default: "Crosswind Calculator | Aviation Reference & Wind Components",
     template: "%s | Crosswind Calculator",
   },
-  description: "Precise aviation reference tool for estimating crosswind and headwind components. Free utility for pilot situational awareness and pre-flight planning.",
+  description: "Estimate crosswind and headwind components instantly. Use our free tool for pilot situational awareness and pre-flight planning. Calculate now!",
   keywords: ["crosswind calculator", "wind components", "pilot tool", "aviation calculator", "headwind component", "aircraft limits", "density altitude"],
   openGraph: {
     title: "Crosswind Calculator | Aviation Reference Tool",

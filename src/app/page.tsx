@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  title: "Crosswind Calculator | Instant Runway Wind & Headwind Tool",
-  description: "The most precise crosswind calculator for pilots. Calculate wind components, headwind, and tailwind instantly for any runway heading. Free aviation utility.",
+  title: "Calculate Crosswind & Wind Components | Crosswind Calculator",
+  description: "The most precise crosswind calculator for pilots. Calculate wind components, headwind, and tailwind instantly for any runway heading. Calculate now!",
 };
 
 const toolSchema = {
@@ -72,10 +72,10 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="mb-10 md:mb-16">
               <h1 className="text-4xl md:text-7xl font-bold text-white tracking-tighter mb-4">
-                <span className="text-cyan-400">Crosswind Calculator</span>: Runway Wind, Headwind, and Tailwind Calculation App
+                Calculate <span className="text-cyan-400">Crosswind</span>: Wind, Headwind, and Tailwind Components
               </h1>
               <p className="text-slate-400 text-base md:text-lg max-w-2xl font-medium">
-                Professional <strong>app</strong> for the modern <strong>pilot</strong>. Perform a precise <strong>calculation</strong> of <strong>wind</strong> variables to ensure safety during every phase of <strong>flight</strong>.
+                Professional tool for the modern pilot. Perform a precise calculation of wind variables to support safety during every phase of flight.
               </p>
             </div>
             
@@ -107,9 +107,9 @@ export default function Home() {
         </div>
 
         {/* Detailed SEO Sections */}
-        <SEOSection id="methodology" title="How This Tool Works">
+        <SEOSection id="methodology" title="Aviation Crosswind Calculation Methodology">
           <p>
-            Understanding <strong>wind components</strong> is mandatory. This digital resource serves as a dedicated utility to decompose a single <strong>wind</strong> <strong>vector</strong>. By entering the <strong>runway</strong> orientation and the current <strong>wind direction</strong>, the navigator receives an immediate <strong>information</strong> readout regarding the lateral forces.
+            Decomposing <strong>wind components</strong> is mandatory. This digital resource serves as a dedicated utility to analyze a single <strong>wind</strong> <strong>vector</strong>. By entering the <strong>runway</strong> orientation and the current <strong>wind direction</strong>, the pilot receives an immediate <strong>data</strong> readout regarding the lateral forces.
           </p>
           <p>
             The software performs its logic using the <strong>sine</strong> and <strong>cosine</strong> of the <strong>angle</strong>. If the <strong>wind</strong> is coming from the <strong>left</strong>, the <strong>crosswind component</strong> will require specific control inputs to <strong>correct</strong> the path. This allows you to <strong>calculate</strong> forces in seconds, compared to the minutes for manual math.
@@ -127,11 +127,11 @@ export default function Home() {
             This <strong>app</strong> is designed to provide both longitudinal <strong>components</strong> instantly. By entering the data and <strong>wind direction</strong>, you can quickly see the situation. If you identify a <strong>tailwind</strong> that exceeds your POH limits, a change of <strong>direction</strong> or a diversion may be required.
           </p>
           <p>
-            Every <strong>pilot</strong> should check this <strong>information</strong> to verify their plan. Whether you are dealing with a 10-knot breeze or 25-knot gusty <strong>wind</strong>, knowing the exact <strong>value</strong> is what keeps things safe.
+            Every <strong>pilot</strong> should check this <strong>data</strong> to verify their plan. Whether you are dealing with a 10-knot breeze or 25-knot gusty <strong>wind</strong>, knowing the exact <strong>value</strong> is what keeps things safe.
           </p>
         </SEOSection>
 
-        <SEOSection id="about" title="Why Analyze These Forces?">
+        <SEOSection id="about" title="Physics of Crosswind Forces">
           <p>
             A <strong>crosswind component</strong> pushes your <strong>aircraft</strong> away from the <strong>runway</strong> centerline. To find these forces, you must determine the geometric <strong>angle</strong> at which the air intercepts your path. If the <strong>direction</strong> is highly offset from the <strong>runway heading</strong>, the lateral force can become a struggle to manage, especially in light machines.
           </p>
@@ -140,12 +140,12 @@ export default function Home() {
           </p>
         </SEOSection>
 
-        <SEOSection id="limits" title="Improving Decision Making">
+        <SEOSection id="limits" title="Improving Aeronautical Decision Making">
           <p>
-            A professional does not guess their numbers. They <strong>use</strong> a specialized system to find the exact result. This ensures that the facts are used to make a go/no-go decision. If the <strong>crosswind component</strong> is excessive, or if a strong following wind is present, you must verify if the machine can safely <strong>land</strong> on the <strong>runway</strong>.
+            A professional does not guess their numbers. They <strong>use</strong> a specialized system to find the exact result. This supports that the facts are used to make a go/no-go decision. If the <strong>crosswind component</strong> is excessive, or if a strong following wind is present, you must verify if the machine can safely <strong>land</strong> on the <strong>runway</strong>.
           </p>
           <p>
-            Our logic helps you assess these thresholds. Compare the results against your <Link href="/aircraft-limits" className="text-cyan-400 hover:underline">aircraft limits</Link> to stay within the safety envelope. Whether you have 200 hours or 20,000 hours, assessing the <strong>angle</strong> remains a vital part of every mission.
+            Our logic helps you assess these thresholds. Compare the results against your <Link href="/aircraft-limits" className="text-cyan-400 hover:underline">aircraft limits</Link> to stay within the safety envelope. Whether you have 200 hours or 20,000 hours, assessing the <strong>angle</strong> remains a critical part of every mission.
           </p>
         </SEOSection>
 
@@ -167,7 +167,7 @@ export default function Home() {
             <div>
               <h3 className="text-xl font-bold text-white mb-3">Why check these forces manually?</h3>
               <p className="text-slate-300">
-                Knowing the basic math ensures that if you don't have access to an <strong>app</strong>, you can still find a safe approach using the <strong>wind</strong> data provided by the tower.
+                Knowing the basic math supports that if you don't have access to an <strong>app</strong>, you can still find a safe approach using the <strong>wind</strong> data provided by the tower.
               </p>
             </div>
           </div>

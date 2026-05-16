@@ -1,0 +1,72 @@
+
+--- Queries (xl/worksheets/sheet2.xml) ---
+Top queries | Clicks | Impressions | CTR | Position
+crosswind calculator | 3.0 | 98.0 | 0.030600000000000002 | 11.45
+cross wind calculator | 1.0 | 14.0 | 0.07139999999999999 | 10.5
+density altitude calculator | 0.0 | 9.0 | 0.0 | 68.89
+headwind crosswind calculator | 0.0 | 6.0 | 0.0 | 15.5
+density altitude | 0.0 | 6.0 | 0.0 | 69.83
+cirrus sr22 maximum demonstrated crosswind component | 0.0 | 5.0 | 0.0 | 9.0
+crosswind component calculator | 0.0 | 5.0 | 0.0 | 35.4
+crosswind component | 0.0 | 5.0 | 0.0 | 64.4
+crosswind clock method | 0.0 | 4.0 | 0.0 | 10.5
+xwind calculator | 0.0 | 4.0 | 0.0 | 22.75
+calculation of density altitude | 0.0 | 4.0 | 0.0 | 64.25
+crosswind chart | 0.0 | 4.0 | 0.0 | 68.25
+cross wind component calculator | 0.0 | 3.0 | 0.0 | 4.33
+airbus a320 maximum demonstrated crosswind | 0.0 | 3.0 | 0.0 | 10.0
+crosswind calculation | 0.0 | 3.0 | 0.0 | 30.0
+calculate wind component | 0.0 | 3.0 | 0.0 | 33.67
+compute density altitude | 0.0 | 3.0 | 0.0 | 67.67
+altitude density calculator | 0.0 | 3.0 | 0.0 | 73.0
+headwind component calculator | 0.0 | 2.0 | 0.0 | 6.0
+hw xw calculator | 0.0 | 2.0 | 0.0 | 8.5
+cirrus sr22 crosswind limit | 0.0 | 2.0 | 0.0 | 9.0
+cessna 172 maximum crosswind component | 0.0 | 2.0 | 0.0 | 9.5
+headwind tailwind calculator | 0.0 | 2.0 | 0.0 | 10.5
+how to calculate headwind component | 0.0 | 2.0 | 0.0 | 38.0
+calculate crosswind | 0.0 | 2.0 | 0.0 | 38.5
+wind component calculator | 0.0 | 2.0 | 0.0 | 39.5
+crabbed landing | 0.0 | 2.0 | 0.0 | 54.0
+crosswind landing technique | 0.0 | 2.0 | 0.0 | 58.5
+cross wind component | 0.0 | 2.0 | 0.0 | 61.0
+high density altitude | 0.0 | 2.0 | 0.0 | 64.5
+calculating density altitude | 0.0 | 2.0 | 0.0 | 67.5
+density altitude calculation | 0.0 | 2.0 | 0.0 | 67.5
+how to calculate density altitude | 0.0 | 2.0 | 0.0 | 70.0
+how do you calculate density altitude | 0.0 | 2.0 | 0.0 | 71.0
+density altitude conversion | 0.0 | 2.0 | 0.0 | 74.5
+how does density altitude affect aircraft performance | 0.0 | 2.0 | 0.0 | 74.5
+crosswind calc | 0.0 | 2.0 | 0.0 | 75.0
+crosswind component calculation | 0.0 | 2.0 | 0.0 | 81.0
+density alt calculator | 0.0 | 2.0 | 0.0 | 84.0
+give me more pictures | 0.0 | 1.0 | 0.0 | 1.0
+
+--- Pages (xl/worksheets/sheet3.xml) ---
+Top pages | Clicks | Impressions | CTR | Position
+https://www.crosswindcalculator.com/ | 4.0 | 144.0 | 0.0278 | 8.48
+https://www.crosswindcalculator.com/guides/how-to-calculate-crosswind | 0.0 | 173.0 | 0.0 | 23.05
+https://www.crosswindcalculator.com/aircraft-limits | 0.0 | 58.0 | 0.0 | 10.03
+https://www.crosswindcalculator.com/density-altitude | 0.0 | 53.0 | 0.0 | 66.02
+https://www.crosswindcalculator.com/guides/mastering-the-clock-method | 0.0 | 39.0 | 0.0 | 8.1
+https://www.crosswindcalculator.com/guides/density-altitude-impact | 0.0 | 30.0 | 0.0 | 29.07
+https://www.crosswindcalculator.com/guides/understanding-poh-limits | 0.0 | 27.0 | 0.0 | 17.48
+https://www.crosswindcalculator.com/guides/crosswind-landing-techniques | 0.0 | 23.0 | 0.0 | 19.39
+https://www.crosswindcalculator.com/manual-guide | 0.0 | 14.0 | 0.0 | 26.14
+https://www.crosswindcalculator.com/aircraft-limits/cessna-172 | 0.0 | 13.0 | 0.0 | 9.92
+
+--- Summary (xl/worksheets/sheet1.xml) ---
+Date | Clicks | Impressions | CTR | Position
+2026-05-01 | 0.0 | 0.0 |  | 
+2026-05-02 | 1.0 | 26.0 | 0.0385 | 8.3
+2026-05-03 | 3.0 | 120.0 | 0.025 | 13.6
+2026-05-04 | 0.0 | 70.0 | 0.0 | 12.8
+2026-05-05 | 0.0 | 63.0 | 0.0 | 18.3
+2026-05-06 | 0.0 | 32.0 | 0.0 | 27.1
+2026-05-07 | 0.0 | 26.0 | 0.0 | 15.5
+2026-05-08 | 0.0 | 38.0 | 0.0 | 27.1
+2026-05-09 | 0.0 | 24.0 | 0.0 | 24.9
+2026-05-10 | 0.0 | 35.0 | 0.0 | 18.4
+2026-05-11 | 0.0 | 33.0 | 0.0 | 22.7
+2026-05-12 | 0.0 | 36.0 | 0.0 | 37.2
+2026-05-13 | 0.0 | 41.0 | 0.0 | 44.9

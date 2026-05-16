@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: "/manual-guide",
   },
   title: "Pilot's Manual Crosswind Calculation Guide | Clock Method",
-  description: "Learn how to calculate crosswind components manually using trigonometry and the clock method. A vital skill for every pilot in the cockpit.",
+  description: "Learn how to calculate crosswind components manually using trigonometry and the clock method. A critical skill for every pilot in the cockpit.",
 };
 
 export default function ManualGuide() {
@@ -82,7 +82,7 @@ export default function ManualGuide() {
 
             <SEOSection title="Why It Matters">
               <p>
-                Exceeding an aircraft's maximum demonstrated crosswind limit is a major safety risk. Understanding these components allows for better decision-making during the approach and landing phase fixed wing flight.
+                Exceeding an aircraft's maximum demonstrated crosswind limit is a major safety risk. Decomposing these components allows for better decision-making during the approach and landing phase fixed wing flight.
               </p>
             </SEOSection>
           </div>

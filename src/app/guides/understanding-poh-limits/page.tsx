@@ -44,7 +44,7 @@ const faqSchema = {
   ]
 };
 
-export default function UnderstandingPohLimits() {
+export default function DecomposingPohLimits() {
   return (
     <div className="min-h-screen flex flex-col bg-mesh">
       <Navbar />
@@ -78,7 +78,7 @@ export default function UnderstandingPohLimits() {
                 <li>Proper baseline <strong>weight and balance</strong> arithmetic fundamentally shapes airframe stability.</li>
                 <li>Check our <Link href="/aircraft-limits" className="text-cyan-400 hover:underline font-bold">Aircraft Limits Database</Link> for common manufacturer benchmarks.</li>
                 <li>An explicit factory generated <strong>checklist</strong> prevents deadly human memory failures.</li>
-                <li>Regularly confirming <strong>fuel</strong> consumption parameters ensures complete mission validity.</li>
+                <li>Regularly confirming <strong>fuel</strong> consumption parameters supports complete mission validity.</li>
               </ul>
             </div>
 
@@ -110,7 +110,7 @@ export default function UnderstandingPohLimits() {
                   Section Two explicitly defines every hard limitation restricted by the original aeronautical architects. These unyielding redline figures dictate absolute structural constraints protecting the fuselage from failing midair. These strict guidelines prevent a pilot from accidentally damaging the primary airframe by aggressively pushing the machine far past its tested breaking point. You cannot simply ignore these factory redlines without risking structural separation or total engine failure over hostile terrain.
                 </p>
                 <p>
-                  Engineers strictly specify the highest safe rotation rate for the internal powerplant. Exceeding the maximum published engine <strong>rpm</strong> limit often fractures crucial internal crankshaft bearings, transforming a routine departure into an immediate off-airport survival scenario. A prudent operator will continually monitor engine gauges to explicitly confirm parameters never depart the specified valid green operating arcs.
+                  Engineers strictly specify the highest safe rotation rate for the internal powerplant. Exceeding the maximum published engine <strong>rpm</strong> limit often fractures critical internal crankshaft bearings, transforming a routine departure into an immediate off-airport survival scenario. A prudent operator will continually monitor engine gauges to explicitly confirm parameters never depart the specified valid green operating arcs.
                 </p>
               </SEOSection>
             </div>
@@ -129,7 +129,7 @@ export default function UnderstandingPohLimits() {
                   The original manufacturer acts as the primary custodian of this technical knowledge base. When ongoing fleet data reveals a previously unknown mechanical weakness, the factory must proactively issue an authorized revision. An owner must completely <strong>update</strong> their specific assigned manuals to explicitly reflect new emergency protocols or revised airspeed restrictions. Flying securely demands possessing the absolute most current data available. 
                 </p>
                 <p>
-                  Historic <strong>POHs</strong> lacked the universal formatting standard seen exclusively today, often leading to crucial information scattered haphazardly throughout confusing appendices. The modern standardization dramatically improves cockpit workflow, allowing a stressed crew member to rapidly locate a critical system schematic or specific limitation exactly when a high-workload crisis erupts. This structured formatting saves countless lives.
+                  Historic <strong>POHs</strong> lacked the universal formatting standard seen exclusively today, often leading to critical data scattered haphazardly throughout confusing appendices. The modern standardization dramatically improves cockpit workflow, allowing a stressed crew member to rapidly locate a critical system schematic or specific limitation exactly when a high-workload crisis erupts. This structured formatting saves countless lives.
                 </p>
               </SEOSection>
             </div>
@@ -143,7 +143,7 @@ export default function UnderstandingPohLimits() {
                   However, merely respecting the maximum weight ceiling ignores a far more insidious aerodynamic danger. You must distribute this mass correctly. The physical location of passengers and cargo directly controls the overall balance point. The balance location strictly dictates the baseline longitudinal stability pitch characteristics of the flying airframe. 
                 </p>
 
-                <h3 className="text-2xl font-semibold text-white mt-8 mb-4">Understanding the Safety Bounds</h3>
+                <h3 className="text-2xl font-semibold text-white mt-8 mb-4">Decomposing the Safety Bounds</h3>
                 <p>
                   A specific authorized performance envelope defines the exact permissible regions for loading. If you carelessly place massive heavy cargo squarely in the aft baggage compartment, the balance location aggressively migrates backward. An excessively aft point of balance severely degrades longitudinal trim authority. The nose naturally pitches upward uncontrollably, forcing the wings rapidly toward their absolute critical angle of attack.
                 </p>
@@ -167,7 +167,7 @@ export default function UnderstandingPohLimits() {
 
                 <h3 className="text-2xl font-semibold text-white mt-8 mb-4">Navigating Crucial Speeds</h3>
                 <p>
-                  The handbook explicitly details a massive variety of essential target V-speeds. A pilot thoroughly memorizes these exact knots indicated values. The best angle of climb velocity allows the airframe to cleanly out-climb a tall obstacle immediately off the departure end, sacrificing some forward vector energy for vertical height gained per horizontal distance traveled. 
+                  The handbook explicitly details a massive variety of key target V-speeds. A pilot thoroughly memorizes these exact knots indicated values. The best angle of climb velocity allows the airframe to cleanly out-climb a tall obstacle immediately off the departure end, sacrificing some forward vector energy for vertical height gained per horizontal distance traveled. 
                 </p>
                 <p>
                   Conversely, respecting the maximum published structural cruising <strong>speed</strong> prevents massive turbulent air gusts from violently warping the primary load-bearing wing spars. Attempting to recklessly fly significantly faster than this documented redline during turbulent weather deliberately courts instantaneous midair structural integration failure. The technical manual strictly establishes an absolute never-exceed speed, commonly marked prominently on the airspeed indicator dial via a solid red radial line. Every pilot rigidly respects this explicit boundary.
@@ -184,15 +184,15 @@ export default function UnderstandingPohLimits() {
                   A catastrophic mechanical failure instantly triggers a massive cascade of intense adrenaline. Professional <strong>aeronautical</strong> training strictly dictates relying entirely on a published factory <strong>checklist</strong> rather than flawed human memory when diagnosing a massive system failure. The third chapter of any standard operating manual details the exact sequence of required corrective inputs for handling everything from an alternator belt failure to an intense uncontained cabin fire.
                 </p>
                 <p>
-                  If the primary engine permanently suffocates mid-air, a pilot must seamlessly pitch explicitly for the published best-range aerodynamic <strong>glide</strong> speed. Attaining this exact specific numeric value ensures the dead machine will physically travel the furthest possible distance forward while slowly descending toward a forced landing site. Traveling either wildly faster or dangerously slower will strictly heavily <strong>reduce</strong> the overall reachable descent footprint, converting a safe off-field touchdown into a certain total terrain impact.
+                  If the primary engine permanently suffocates mid-air, a pilot must seamlessly pitch explicitly for the published best-range aerodynamic <strong>glide</strong> speed. Attaining this exact specific numeric value supports the dead machine will physically travel the furthest possible distance forward while slowly descending toward a forced landing site. Traveling either wildly faster or dangerously slower will strictly heavily <strong>reduce</strong> the overall reachable descent footprint, converting a safe off-field touchdown into a certain total terrain impact.
                 </p>
 
                 <h3 className="text-2xl font-semibold text-white mt-8 mb-4">Executing Established Procedures</h3>
                 <p>
-                  Thoroughly memorizing critical memory items forms the foundation of robust survival. While a dense printed book holds exact details, a pilot physically cannot waste crucial split seconds blindly flipping through dense paper pages while thick smoke fills the pressurized flight deck. The explicit <strong>emergency procedures</strong> demand rapid immediate rote execution of fundamental steps—such as securing the primary fuel selector valve or deploying the emergency backup landing gear crank—before pulling out the QRH binder to diligently mop up the remaining detailed secondary schematic items.
+                  Thoroughly memorizing critical memory items forms the foundation of robust survival. While a dense printed book holds exact details, a pilot physically cannot waste critical split seconds blindly flipping through dense paper pages while thick smoke fills the pressurized flight deck. The explicit <strong>emergency procedures</strong> demand rapid immediate rote execution of fundamental steps—such as securing the primary fuel selector valve or deploying the emergency backup landing gear crank—before pulling out the QRH binder to diligently mop up the remaining detailed secondary schematic items.
                 </p>
                 <p>
-                  Every certified <strong>POH</strong> deeply acts to distill vast decades of bloody regulatory aeronautical history into safe systematic rules. A highly competent flight <strong>instructor</strong> consistently drills a new pilot exhaustively regarding these foundational metrics until their execution becomes seamless muscle memory. Operating a complex fast-moving machine requires massive diligence, exact profound precision, and total strict unyielding adherence to the absolute explicit boundaries established comprehensively by the original certified baseline manufacturer test team. You systematically verify your capabilities every single journey specifically to ensure you ultimately land totally safely. The explicit limitations section protects your fundamental survival securely during every single takeoff.
+                  Every certified <strong>POH</strong> deeply acts to distill vast decades of bloody regulatory aeronautical history into safe systematic rules. A highly competent flight <strong>instructor</strong> consistently drills a new pilot exhaustively regarding these foundational metrics until their execution becomes seamless muscle memory. Operating a complex fast-moving machine requires massive diligence, exact profound precision, and total strict unyielding adherence to the absolute explicit boundaries established comprehensively by the original certified baseline manufacturer test team. You systematically verify your capabilities every single journey specifically to support you ultimately land totally safely. The explicit limitations section protects your fundamental survival securely during every single takeoff.
                 </p>
               </SEOSection>
             </div>

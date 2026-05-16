@@ -26,7 +26,7 @@ export default function BestCrosswindCalculators() {
               <ul className="list-disc pl-6 space-y-2">
                 <li>Crosswind calculators eliminate manual error during high-workload phases.</li>
                 <li>Modern apps integrate live METAR data for instant results.</li>
-                <li>Both web-based tools and offline mobile apps are essential for redundancy.</li>
+                <li>Both web-based tools and offline mobile apps are key for redundancy.</li>
                 <li>Always verify digital results against your aircraft's specific POH limits.</li>
               </ul>
             </section>
@@ -110,7 +110,7 @@ export default function BestCrosswindCalculators() {
             </SEOSection>
 
             <p className="text-slate-400">
-              Combine these tools with our <Link href="/guides/how-to-calculate-crosswind" className="text-cyan-400 hover:underline">how-to guide</Link> to ensure you maintain a backup skill set for manual calculation.
+              Combine these tools with our <Link href="/guides/how-to-calculate-crosswind" className="text-cyan-400 hover:underline">how-to guide</Link> to support you maintain a backup skill set for manual calculation.
             </p>
           </div>
         </div>

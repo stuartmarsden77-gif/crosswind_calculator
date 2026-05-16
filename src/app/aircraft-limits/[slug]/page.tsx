@@ -75,7 +75,7 @@ export default function AircraftLimitPage({ params }: { params: { slug: string }
               </div>
               
               <p className="text-slate-400 text-lg">
-                {aircraft.description} Understanding the crosswind limits of the {aircraft.type} is essential for safe flight operations and landing decision making.
+                {aircraft.description} Decomposing the crosswind limits of the {aircraft.type} is key for safe flight operations and landing decision making.
               </p>
             </div>
             
@@ -87,7 +87,7 @@ export default function AircraftLimitPage({ params }: { params: { slug: string }
           </div>
 
           <div className="prose prose-invert prose-cyan max-w-none space-y-12 text-slate-300">
-            <SEOSection title="Understanding the Demonstrated Limit">
+            <SEOSection title="Decomposing the Demonstrated Limit">
               <p>
                 The <strong>Maximum Demonstrated Crosswind Component</strong> for the {aircraft.type} is {aircraft.limit}. It is important to note that this is not an absolute aerodynamic limit, but rather the maximum crosswind velocity at which the aircraft was tested and found to have controllable handling characteristics by a factory test pilot during certification.
               </p>
