@@ -61,7 +61,7 @@ export default function HowToCalculateCrosswind() {
       <main className="flex-grow pt-24 pb-24">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-12">
-            <span className="text-cyan-400">Calculate Crosswind Components</span>: A Runway Calculation for Pilots
+            How to Calculate <span className="text-cyan-400">Crosswind Components</span>
           </h1>
 
           <div className="prose prose-invert prose-cyan max-w-none space-y-12 text-slate-300">

@@ -53,7 +53,7 @@ export default function ClockMethod() {
       <main className="flex-grow pt-24 pb-24">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-12">
-            <span className="text-cyan-400">Quick Crosswind Calculation</span>: The Clock Method Runway Calculator
+            The Clock Method: <span className="text-cyan-400">Quick Mental Crosswind Calculation</span>
           </h1>
 
           <div className="prose prose-invert prose-cyan max-w-none space-y-12 text-slate-300">

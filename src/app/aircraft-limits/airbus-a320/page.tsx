@@ -8,8 +8,8 @@ import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "A320 Lateral Limits | Operational Analysis",
-  description: "Technical analysis of A320 lateral limitations, max values, and wind considerations for line pilots in simulator and operational environments.",
+  title: "Airbus A320 Maximum Crosswind Limits | Crosswind Calculator",
+  description: "Technical analysis of A320 maximum crosswind limits, including manual and automated approach thresholds for simulator and operational environments.",
 };
 
 const faqSchema = {
@@ -54,7 +54,7 @@ export default function AirbusA320Limits() {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16 border-b border-white/5 pb-16">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-6 leading-tight">
-                <span className="text-cyan-400">A320</span> <span className="text-cyan-400">Crosswind Landing</span> <span className="text-cyan-400">Limitation</span>s: What Every <span className="text-cyan-400">Pilot</span> Should Know About <span className="text-cyan-400">Max Crosswind</span>, <span className="text-cyan-400">Gust</span> Factors, <span className="text-cyan-400">Flight</span> in a <span className="text-cyan-400">Strong Crosswind</span>, and <span className="text-cyan-400">Simulator</span> Training for <span className="text-cyan-400">Airbus Pilots</span>
+                Airbus A320 <span className="text-cyan-400">Maximum Crosswind</span> Limits & Landing Guide
               </h1>
               
               <div className="bg-white/5 border border-cyan-500/30 rounded-xl p-8 mb-6">

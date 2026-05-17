@@ -8,8 +8,8 @@ import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Cessna 150/152 Lateral Limits & Wind Limits | Crosswind Calculator",
-  description: "Complete guide to the 150 and the Commuter wind limits. Learn the max crosswind, crosswind landing techniques, and what every aviator should know about the C150.",
+  title: "Cessna 150/152 Maximum Crosswind Limits | Crosswind Calculator",
+  description: "Cessna 150 and 152 maximum demonstrated crosswind limits and handling techniques. Learn safe operation for the C150 in windy conditions.",
 };
 
 const faqSchema = {
@@ -54,7 +54,7 @@ export default function Cessna150152Limits() {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16 border-b border-white/5 pb-16">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-6 leading-tight">
-                <span className="text-cyan-400">Cessna 150</span> & <span className="text-cyan-400">C152</span> <span className="text-cyan-400">Crosswind Limit</span> and <span className="text-cyan-400">Wind Limits</span>: <span className="text-cyan-400">Demonstrated Crosswind</span>, <span className="text-cyan-400">Crosswind Landing</span> Techniques, and <span className="text-cyan-400">Maximum Crosswind</span> for the <span className="text-cyan-400">Aircraft</span> — How <span className="text-cyan-400">C150</span> Pilots Have <span className="text-cyan-400">Landed</span> in <span className="text-cyan-400">Crosswind</span> and <span className="text-cyan-400">Wind</span>
+                Cessna 150 & 152 <span className="text-cyan-400">Maximum Demonstrated Crosswind</span> Limits
               </h1>
               
               <div className="bg-white/5 border border-cyan-500/30 rounded-xl p-8 mb-6">

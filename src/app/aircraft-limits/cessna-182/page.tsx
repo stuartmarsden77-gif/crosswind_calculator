@@ -8,8 +8,8 @@ import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Cessna 182 Skylane Lateral Limit | Performance Analysis",
-  description: "Detailed analysis of the Cessna 182 Skylane lateral force threshold, peak values, and proven components for aviators. Skylane technical guide.",
+  title: "Cessna 182 Skylane Maximum Crosswind Limits | Crosswind Calculator",
+  description: "Cessna 182 maximum demonstrated crosswind limits and handling techniques. Learn safe operation for the Skylane in windy conditions.",
 };
 
 const faqSchema = {
@@ -54,7 +54,7 @@ export default function Cessna182Limits() {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16 border-b border-white/5 pb-16">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-6 leading-tight">
-                Cessna 182 Skylane Lateral Dynamics: Analyzing the <span className="text-cyan-400">Limit</span> Profile and <span className="text-cyan-400">Wind</span> Behavior via the <span className="text-cyan-400">Demonstrate</span>d Threshold and <span className="text-cyan-400">Regulatory</span> Standards
+                Cessna 182 Skylane <span className="text-cyan-400">Maximum Crosswind</span> Limits
               </h1>
               
               <div className="bg-white/5 border border-cyan-500/30 rounded-xl p-8 mb-6">

@@ -8,8 +8,8 @@ import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "SR22 Lateral Limit | Technical Analysis",
-  description: "Technical analysis of the SR22 lateral force threshold and arrival techniques for the platform. Master the aircraft limitations.",
+  title: "Cirrus SR22 Maximum Crosswind Limits | Crosswind Calculator",
+  description: "Cirrus SR22 maximum demonstrated crosswind limits and handling techniques. Learn safe operation for the SR22 in windy conditions.",
 };
 
 const faqSchema = {
@@ -54,7 +54,7 @@ export default function CirrusSR22Limits() {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16 border-b border-white/5 pb-16">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-6 leading-tight">
-                Mastering the Lateral Component: Analyzing the <span className="text-cyan-400">Max Crosswind</span> and <span className="text-cyan-400">Crosswind Landing</span> Techniques
+                Cirrus SR22 <span className="text-cyan-400">Maximum Demonstrated Crosswind</span> Limits
               </h1>
               
               <div className="bg-white/5 border border-cyan-500/30 rounded-xl p-8 mb-6">
